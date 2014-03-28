@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Sexual Health SHS game</string>
+    <string name="a">A. Sample answer</string>
+    <string name="b">B. Sample answer</string>
+    <string name="c">C. Sample answer</string>
+    <string name="d">D. Sample answer</string>
+    <string name="dummy_content">This will be\nwhere the\nquestions go!</string>
+
+</resources>
