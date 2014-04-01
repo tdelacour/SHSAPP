@@ -43,32 +43,44 @@
             android:orientation="vertical"
             tools:ignore="UselessParent" >
             	<Button
-            	    android:id="@+id/dummy_button"
+            	    android:id="@+id/answer1"
             	    style="?buttonBarButtonStyle"
             	    android:layout_width="fill_parent"
             	    android:layout_height="wrap_content"
-            	    android:text="@string/a" />
+            	    android:text="@string/a"
+            	    android:gravity="center_vertical"
+            	    android:paddingLeft="50dp"
+            	    android:onClick="onAnswer1" />
             
             	<Button
-            	    android:id="@+id/dummy_button"
+            	    android:id="@+id/answer2"
            		    style="?buttonBarButtonStyle"
             	    android:layout_width="fill_parent"
                 	android:layout_height="wrap_content"
-                	android:text="@string/b" />
+                	android:text="@string/b" 
+                	android:gravity="center_vertical"
+            	    android:paddingLeft="50dp"
+            	    android:onClick="onAnswer2" />
             
             	<Button
-                	android:id="@+id/dummy_button"
+                	android:id="@+id/answer3"
                 	style="?buttonBarButtonStyle"
                 	android:layout_width="fill_parent"
                 	android:layout_height="wrap_content"
-                	android:text="@string/c" />
+                	android:text="@string/c" 
+                	android:gravity="center_vertical"
+            	    android:paddingLeft="50dp"
+            	    android:onClick="onAnswer3" />
             
             	<Button
-                	android:id="@+id/dummy_button"
+                	android:id="@+id/answer4"
                 	style="?buttonBarButtonStyle"
                 	android:layout_width="fill_parent"
                 	android:layout_height="wrap_content"
-                	android:text="@string/d" />
+                	android:text="@string/d" 
+                	android:gravity="center_vertical"
+            	    android:paddingLeft="50dp"
+            	    android:onClick="onAnswer4" />
         	</LinearLayout>
     </FrameLayout>
 

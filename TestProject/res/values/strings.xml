@@ -2,10 +2,10 @@
 <resources>
 
     <string name="app_name">Sexual Health SHS game</string>
-    <string name="a">A. Sample answer</string>
-    <string name="b">B. Sample answer</string>
-    <string name="c">C. Sample answer</string>
-    <string name="d">D. Sample answer</string>
+    <string name="a">A.&#x20;</string>
+    <string name="b">B.&#x20;</string>
+    <string name="c">C.&#x20;</string>
+    <string name="d">D.&#x20;</string>
     <string name="dummy_content">This will be\nwhere the\nquestions go!</string>
 
 </resources>
