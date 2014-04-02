@@ -3,6 +3,7 @@ import com.example.testproject.util.*;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -37,8 +38,20 @@ public class FullscreenActivity extends Activity {
 	
 	// reaction to button click. Again can we generalize?
 	public void onAnswer1(View view){
+		// Update question object and XML
 		curQuestion = curQuestion.getNextQuestions()[0];
 		setViews();
+		
+		// Open the Feedback pop-up
+		/*
+		 * We need to send data over to the Feedback pop up. I think the best 
+		 * way to do this is to have a series of string comments hard-coded 
+		 * into each question object. That way there can be one comment associated 
+		 * with each answer. Apparently the way to transmit data between activities 
+		 * is through the "intent" thingy. Not sure how that works yet. - TD
+		 */
+		Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
+		FullscreenActivity.this.startActivityForResult(intent, 1);
 	}
 	
 	public void onAnswer2(View view){
@@ -70,13 +83,13 @@ public class FullscreenActivity extends Activity {
 		 */
 		String[] strArr = curQuestion.getAnswers(); 		
 		Button mButton=(Button)findViewById(R.id.answer1);
-        mButton.setText(strArr[0]);
-        mButton=(Button)findViewById(R.id.answer2);
-        mButton.setText(strArr[1]);
-        mButton=(Button)findViewById(R.id.answer3);
-        mButton.setText(strArr[2]);
-        mButton=(Button)findViewById(R.id.answer4);
-        mButton.setText(strArr[3]);
+		mButton.setText(strArr[0]);
+		mButton=(Button)findViewById(R.id.answer2);
+		mButton.setText(strArr[1]);
+		mButton=(Button)findViewById(R.id.answer3);
+		mButton.setText(strArr[2]);
+		mButton=(Button)findViewById(R.id.answer4);
+		mButton.setText(strArr[3]);
 	}
 	
 	private void makeTree(){
