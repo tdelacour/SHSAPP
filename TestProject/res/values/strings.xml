@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SHS app</string>
+    <string name="Feedback">Feedback Pop Up</string>
+    <string name="a">A.&#x20;</string>
+    <string name="b">B.&#x20;</string>
+    <string name="c">C.&#x20;</string>
+    <string name="d">D.&#x20;</string>
+    <string name="dummy_content">This will be\nwhere the\nquestions go!</string>
+    <string name="feedbackPop">Well hello!</string>
+    <string name="Continue">Continue</string>
+    <string name="title_activity_feedback">FeedbackActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
