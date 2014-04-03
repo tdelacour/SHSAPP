@@ -31,8 +31,14 @@ public class HealthView extends View {
 	}
 	
 	public void onDraw(Canvas c){
+		paint.setColor(Color.BLACK);
+		paint.setStyle(Paint.Style.STROKE);
+		paint.setStrokeWidth(2);
+		c.drawRect(10, 10, 110, 40, paint);	
+	
 		paint.setColor(Color.RED);
-		c.drawRect(10, 10, 50, 20, paint);	
+		paint.setStyle(Paint.Style.FILL);
+		c.drawRect(12, 12, 10 + pregnancy, 38, paint);
 	}
 	
 	public void updatePreg(int x){
