@@ -1,18 +1,11 @@
 package com.example.testproject;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
-
+import android.widget.TextView;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.View;
 
 
 // This Activity is the feedback popup between each question
@@ -22,6 +15,11 @@ public class FeedbackActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_feedback);
+		
+		Intent intent = getIntent();
+		String feedback = intent.getStringExtra("feedback");
+		TextView content = (TextView) findViewById(R.id.feedback_content);
+		content.setText(feedback);
 	}
 
 	@Override

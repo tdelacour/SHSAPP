@@ -1,14 +1,8 @@
 package com.example.testproject;
 
-import com.example.testproject.util.SystemUiHider;
-
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -34,34 +28,48 @@ public class FullscreenActivity extends Activity {
 	// reaction to button click. Again can we generalize?
 	public void onAnswer1(View view){
 		// Update question object and XML
+		String feedback = curQuestion.getFeedback(1);
 		curQuestion = curQuestion.getNextQuestions()[0];
 		setViews();
 
 		// Open the Feedback pop-up
 		/*
 		 * We need to send data over to the Feedback pop up. I think the best 
-		 * way to do this is to have a series of string comments hard-coded 
+		 * way to do his is to have a series of string comments hard-coded 
 		 * into each question object. That way there can be one comment associated 
 		 * with each answer. Apparently the way to transmit data between activities 
 		 * is through the "intent" thingy. Not sure how that works yet. - TD
 		 */
 		Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
+		intent.putExtra("feedback", feedback);
 		FullscreenActivity.this.startActivityForResult(intent, 1);
 	}
 
 	public void onAnswer2(View view){
+		String feedback = curQuestion.getFeedback(2);
 		curQuestion = curQuestion.getNextQuestions()[1];
 		setViews();
+		Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
+		intent.putExtra("feedback", feedback);
+		FullscreenActivity.this.startActivityForResult(intent, 1);
 	}
 
 	public void onAnswer3(View view){
+		String feedback = curQuestion.getFeedback(3);
 		curQuestion = curQuestion.getNextQuestions()[2];
 		setViews();
+		Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
+		intent.putExtra("feedback", feedback);
+		FullscreenActivity.this.startActivityForResult(intent, 1);
 	}
 
 	public void onAnswer4(View view){
+		String feedback = curQuestion.getFeedback(4);
 		curQuestion = curQuestion.getNextQuestions()[3];
 		setViews();
+		Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
+		intent.putExtra("feedback", feedback);
+		FullscreenActivity.this.startActivityForResult(intent, 1);
 	}
 
 	// reset layout
@@ -95,11 +103,11 @@ public class FullscreenActivity extends Activity {
 		QuestionI question2 = new Question(question, answers2);
 
 		question = "This is our first question";
-		String[] feedback = {"Good job!", "Uh-oh", "Better luck next time", "okay..."};
+		String[] feedback1 = {"Good job!", "Uh-oh", "Better luck next time", "okay..."};
 		String[] answers1 = {"A. q1 answer1", "B. q1 answer2", "C. q1 answer3", 
 				"D. q1 answer4"};
 		QuestionI[] nextQs1 = {question2, question2, question2, question2};
-		QuestionI question1 = new Question(question, answers1, nextQs1, feedback);
+		QuestionI question1 = new Question(question, answers1, nextQs1, feedback1);
 
 		curQuestion = question1;	
 	}

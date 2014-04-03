@@ -46,7 +46,7 @@ public class Question implements QuestionI {
 		
 		// initialize feedback
 		this.feedback = new String[arrLen];
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < arrLen; i++)
 			this.feedback[i] = feedback[i];
 	}
 
@@ -81,6 +81,14 @@ public class Question implements QuestionI {
 
 	public QuestionI[] getNextQuestions(){
 		return this.nextQs;
+	}
+	
+	public String getFeedback(int i){
+		i--;
+		if (i >= 0 && i < feedback.length){
+			return feedback[i];
+		}
+		else throw new IndexOutOfBoundsException();
 	}
 
 }
