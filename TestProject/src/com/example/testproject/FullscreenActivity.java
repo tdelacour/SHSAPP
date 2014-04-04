@@ -97,17 +97,37 @@ public class FullscreenActivity extends Activity {
 
 	private void makeTree(){
 		// here is where we play around with different question formulations
-		String question = "This is our second question";
-		String[] answers2 = {"A. q2 answer1", "B. q2 answer2", "C. q2 answer3", 
-		"D. q2 answer4"};
-		QuestionI question2 = new Question(question, answers2);
+		String questionS5ab = "You wake up having no idea where you with a random naked person next to you. Oh no! You think you might not have used a condom";
+		String[] answers5ab = {"A. Who cares! If I leave now, I can still make it to brunch at hill.", "B. We should probably get some emergency contraception", "C. Ugh, maybe if I just go back to sleep, this whole situation will resolve itself.", "D. Why is there a whole in my pants?"};
+		QuestionI question5ab = new Question(questionS5ab, answers5ab);
+		
+		String questionS5c = "As you’re enjoying a nice, cold glass of water, some person comes up to you and starts talking… and they’re soooo hawt!";
+		String[] answers5c = {"A. Drop the pants right meow", "B. I’m too drunk to even talk to people right now. I should go home", "C. Lesgo go home", "D. Attractive people are scary. Play dead and maybe they’ll leave you alone."};
+		QuestionI question5c = new Question(questionS5c, answers5c);
+		
+		String questionS4 = "You are getting really drunk. What should you do now?";
+		String[] answers4 = {"A. Switch to beer. You can’t get drunk off beer.", "B. MORE SHOTS!!!", "C. Drink some water", "D. Ooooh, dammmn who that over there?"};
+		String[] feedback4 = {"Good job!", "Good job!", "no", "no"};
+		QuestionI[] nextQs4 = {question5ab, question5ab, question5c, question5c};
+		QuestionI question4 = new Question(questionS4, answers4, nextQs4, feedback4);
+		
+		String questionS3 = "You go to the party. What do you want to watch out for?";
+		String[] answers3 = {"A. Accepting drinks from strangers", "B. Getting raped", "C. Making out with that random person", "D. Getting an embarrassing picture taken of you."};
+		String[] feedback3 = {"Good job!", "Good job!", "no", "no"};
+		QuestionI[] nextQs3 = {question4, question4, question4, question4};
+		QuestionI question3 = new Question(questionS3, answers3, nextQs3, feedback3);
+		
+		String questionS2 = "Oh no! You’re broke... but you still want to be safe. Where can you get free condoms?";
+		String[] answers2 = {"A. SHS", "B. 7 Eleven", "C. CHOP", "D. Your friend’s room"};
+		String[] feedback2 = {"Good job!", "no", "no", "no"};
+		QuestionI[] nextQs2 = {question3, question3, question3, question3};
+		QuestionI question2 = new Question(questionS2, answers2, nextQs2, feedback2);
 
-		question = "This is our first question";
-		String[] feedback1 = {"Good job!", "Uh-oh", "Better luck next time", "okay..."};
-		String[] answers1 = {"A. q1 answer1", "B. q1 answer2", "C. q1 answer3", 
-				"D. q1 answer4"};
+		String questionS1 = "You are going out tonight. What do you want to bring?";
+		String[] feedback1 = {"Good job!", "Good job!", "okay...", "okay..."};
+		String[] answers1 = {"A. Condoms", "B. A friend", "C. Extra pants", "D. Your cool new flask"};
 		QuestionI[] nextQs1 = {question2, question2, question2, question2};
-		QuestionI question1 = new Question(question, answers1, nextQs1, feedback1);
+		QuestionI question1 = new Question(questionS1, answers1, nextQs1, feedback1);
 
 		curQuestion = question1;	
 	}
