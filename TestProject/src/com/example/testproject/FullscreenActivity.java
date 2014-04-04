@@ -79,7 +79,8 @@ public class FullscreenActivity extends Activity {
 		question.setText(curQuestion.getQuestion());
 
 		// answers: concatenates curQuestion answers with default ("A", "B", etc)
-		/* So I generalized QuestionI objects to be able to take any number 
+		/* 
+		 * So I generalized QuestionI objects to be able to take any number 
 		 * of answers, but realize here that this is sort of set by the total
 		 * number of buttons we define in the XML itself. Ideas for generalizing?
 		 *  -TD

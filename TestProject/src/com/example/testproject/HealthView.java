@@ -35,17 +35,10 @@ public class HealthView extends View {
 		//retrieve padding values
 		int top = getPaddingTop();
 		int border = 5;
+		int height = 30;
+		int width = 100;
 		
-		//draw border
-		paint.setColor(Color.BLACK);
-		paint.setStyle(Paint.Style.STROKE);
-		paint.setStrokeWidth(border);
-		c.drawRect(0, top, 100 + 2*border, top + 30, paint);	
-	
-		//draw fill
-		paint.setColor(Color.RED);
-		paint.setStyle(Paint.Style.FILL);
-		c.drawRect(0, top + border, border + pregnancy, top + 30 - border, paint);
+		
 	}
 	
 	public void updatePreg(int x){

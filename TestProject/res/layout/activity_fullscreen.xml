@@ -15,16 +15,7 @@
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical" > 
 	    
-	    <com.example.testproject.HealthView
-        	android:id="@+id/healthView"
-        	android:layout_width="wrap_content"
-    		android:layout_height="match_parent"
-    		android:gravity="right"
-    		android:layout_gravity="right"
-    		android:paddingTop="60dp"/>
-
-    	
-    	<TextView
+	    <TextView
         	android:id="@+id/fullscreen_content"
         	android:layout_width="fill_parent"
         	android:layout_height="wrap_content"
@@ -36,6 +27,12 @@
         	android:textSize="50sp"
         	android:textStyle="bold" 
         	android:paddingTop="10dp"/>
+	    
+	    <com.example.testproject.HealthView
+        	android:id="@+id/healthView"
+        	android:layout_width="wrap_content"
+    		android:layout_height="match_parent"
+    		android:paddingTop="60dp"/>
     
     </LinearLayout>
         
