@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -26,19 +27,44 @@ public class HealthView extends View {
 	
 	private void init(){
 		pregnancy = 50;
-		std = 50;
-		legal = 50;
+		legal = 20;
+		std = 80;
 	}
 	
 	@Override
 	public void onDraw(Canvas c){
-		//retrieve padding values
+		int red; int green; 
+		int left = getPaddingLeft();
 		int top = getPaddingTop();
-		int border = 5;
-		int height = 30;
-		int width = 100;
+		paint.setStyle(Paint.Style.FILL);
+		paint.setTextSize(20);
+		paint.setTypeface(Typeface.DEFAULT_BOLD);
 		
+		//Color for pregnancy
+		red = (int)((100 - pregnancy) * 1.75);
+		green = (int)(pregnancy * 1.75);	
+		paint.setColor(Color.rgb(red, green, 0));
 		
+		//Draw pregnancy rectangle
+		c.drawRect(left, top, left + 2*pregnancy + 2, top + 30, paint);
+		paint.setColor(Color.rgb(51, 181, 229));
+		c.drawText("Pregnancy", left + 2, top + 23, paint);
+		
+		//legal
+		red = (int)((100 - legal) * 1.75);
+		green = (int)(legal * 1.75);	
+		paint.setColor(Color.rgb(red, green, 0));
+		c.drawRect(left, top + 50, left + 2*legal + 2, top + 80, paint);
+		paint.setColor(Color.rgb(51, 181, 229));
+		c.drawText("Rape", left + 2, top + 73, paint);
+		
+		//std
+		red = (int)((100 - std) * 1.75);
+		green = (int)(std * 1.75);	
+		paint.setColor(Color.rgb(red, green, 0));
+		c.drawRect(left, top + 100, left + 2*std + 2, top + 130, paint);
+		paint.setColor(Color.rgb(51, 181, 229));
+		c.drawText("STD", left + 2, top + 123, paint);
 	}
 	
 	public void updatePreg(int x){
@@ -57,8 +83,8 @@ public class HealthView extends View {
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
-	    int desiredWidth = 200;
-	    int desiredHeight = 160;
+	    int desiredWidth = 220;
+	    int desiredHeight = 200;
 
 	    int widthMode = MeasureSpec.getMode(widthMeasureSpec);
 	    int widthSize = MeasureSpec.getSize(widthMeasureSpec);

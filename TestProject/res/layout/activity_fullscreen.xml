@@ -12,8 +12,10 @@
     -->
 	<LinearLayout 
 	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
+	    android:layout_height="fill_parent"
+	    android:baselineAligned="false"
 	    android:orientation="vertical" > 
+	    
 	    
 	    <TextView
         	android:id="@+id/fullscreen_content"
@@ -21,18 +23,22 @@
         	android:layout_height="wrap_content"
         	android:gravity="left"
         	android:layout_gravity="left"
-        	android:keepScreenOn="true"
         	android:text="@string/dummy_content"
         	android:textColor="#33b5e5"
         	android:textSize="50sp"
         	android:textStyle="bold" 
-        	android:paddingTop="10dp"/>
+        	android:paddingTop="50dp"/>
 	    
 	    <com.example.testproject.HealthView
         	android:id="@+id/healthView"
         	android:layout_width="wrap_content"
-    		android:layout_height="match_parent"
-    		android:paddingTop="60dp"/>
+        	android:layout_height="0dp"
+        	android:layout_weight="1"
+        	android:gravity="bottom"
+        	android:layout_gravity="bottom"
+        	android:paddingLeft="5dp"
+        	android:paddingTop="15dp"/>
+	   	 
     
     </LinearLayout>
         
