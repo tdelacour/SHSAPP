@@ -27,8 +27,8 @@ public class HealthView extends View {
 	
 	private void init(){
 		pregnancy = 50;
-		legal = 20;
-		std = 80;
+		legal = 50;
+		std = 50;
 	}
 	
 	@Override
@@ -77,6 +77,12 @@ public class HealthView extends View {
 	
 	public void updateLegal(int x){
 		legal += x;
+	}
+	
+	public void updateAll(int[] x){
+		pregnancy += x[0];
+		legal += x[1];
+		std += x[2];
 	}
 	
 	//yay google...

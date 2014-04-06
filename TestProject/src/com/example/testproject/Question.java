@@ -6,69 +6,64 @@ public class Question implements QuestionI {
 	private String[] answers;
 	private QuestionI[] nextQs;
 	private String[] feedback;
+	private int[][] points;
 
 	public Question (){
 		// Initialize question string
 		this.question = "Add a question here"; 
-
-		// initialize answer strings
-		String defaultAns = "Add answer here";
-		this.answers = new String[4];
-		for (int i = 0; i < 4; i++) 
-			answers[i] = defaultAns;
-
-		// initialize question pointers to the current object
-		nextQs = new Question[4];
-		for (int i = 0; i < 4; i++)
-			nextQs[i] = this;
 		
-		// initialize feedback
+		// Initialize default of 4 answers, pointers, feedback, points
+		String defaultAns = "Add answer here";
 		String defaultfeed = "Well Hello!";
-		feedback = new String[4];
-		for (int i = 0; i < 4; i++)
+		this.feedback = new String[4];
+		this.nextQs = new Question[4];
+		this.answers = new String[4];
+		this.points = new int[4][3];
+		for (int i = 0; i < 4; i++){ 
+			answers[i] = defaultAns;
+			nextQs[i] = this;
 			feedback[i] = defaultfeed;
+			points[i][0] = 0;
+			points[i][1] = 0;
+			points[i][2] = 0;
+		}
 	}
 
-	public Question (String q, String[] answers, QuestionI[] nextQs, String[] feedback){
-		// initialize question string
+	public Question (String q, String[] answers, QuestionI[] nextQs, String[] feedback, int[][] points){
 		this.question = q;
 
 		int arrLen = Math.min(Math.min(answers.length, nextQs.length), feedback.length);
-		// initialize answer strings
-		this.answers = new String[arrLen];
-		for (int i = 0; i < arrLen; i++) 
-			this.answers[i] = answers[i];
-
-		// initialize question pointers
-		this.nextQs = new QuestionI[arrLen];
-		for (int i = 0; i < arrLen; i++) 
-			this.nextQs[i] = nextQs[i];
 		
-		// initialize feedback
+		this.answers = new String[arrLen];
+		this.nextQs = new QuestionI[arrLen];
 		this.feedback = new String[arrLen];
-		for (int i = 0; i < arrLen; i++)
+		this.points = new int[arrLen][3];
+		for (int i = 0; i < arrLen; i++){ 
+			this.answers[i] = answers[i];
+			this.nextQs[i] = nextQs[i];
 			this.feedback[i] = feedback[i];
+			this.points[i][0] = points[i][0];
+			this.points[i][1] = points[i][1];
+			this.points[i][2] = points[i][2];
+		}
 	}
 
 	public Question (String q, String[] answers){
-		// initialize question string
 		this.question = q;
 
-		// initialize answer strings
-		this.answers = new String[answers.length];
-		for (int i = 0; i < answers.length; i++) 
-			this.answers[i] = answers[i];
-
-		// initialize question pointers
-		this.nextQs = new QuestionI[answers.length];
-		for (int i = 0; i < answers.length; i++) 
-			this.nextQs[i] = this;
-		
-		// initialize feedback
 		String defaultfeed = "Well Hello!";
-		feedback = new String[4];
-		for (int i = 0; i < 4; i++)
+		this.answers = new String[answers.length];
+		this.nextQs = new QuestionI[answers.length];
+		this.feedback = new String[4];
+		this.points = new int[answers.length][3];
+		for (int i = 0; i < answers.length; i++){ 
+			this.answers[i] = answers[i];
+			this.nextQs[i] = this;
 			feedback[i] = defaultfeed;
+			points[i][0] = 0;
+			points[i][1] = 0;
+			points[i][2] = 0;
+		}
 	}
 
 	public String getQuestion(){
@@ -87,6 +82,14 @@ public class Question implements QuestionI {
 		i--;
 		if (i >= 0 && i < feedback.length){
 			return feedback[i];
+		}
+		else throw new IndexOutOfBoundsException();
+	}
+	
+	public int[] getPoints(int i){
+		i--;
+		if (i >= 0 && i < points.length){
+			return points[i];
 		}
 		else throw new IndexOutOfBoundsException();
 	}

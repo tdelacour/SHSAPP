@@ -6,4 +6,5 @@ public interface QuestionI {
 	public String[] getAnswers();
 	public QuestionI[] getNextQuestions();
 	public String getFeedback(int i);
+	public int[] getPoints(int i);
 }
