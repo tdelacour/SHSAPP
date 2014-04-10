@@ -7,6 +7,7 @@ public class Question implements QuestionI {
 	private QuestionI[] nextQs;
 	private String[] feedback;
 	private int[][] points;
+	public boolean isFinal;
 
 	public Question (){
 		// Initialize question string
@@ -48,8 +49,9 @@ public class Question implements QuestionI {
 		}
 	}
 
-	public Question (String q, String[] answers){
+	public Question (String q, String[] answers, boolean isFinal){
 		this.question = q;
+		this.isFinal = isFinal;
 
 		String defaultfeed = "Well Hello!";
 		this.answers = new String[answers.length];

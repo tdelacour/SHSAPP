@@ -125,11 +125,11 @@ public class FullscreenActivity extends Activity {
 		// here is where we play around with different question formulations
 		String questionS5ab = "You wake up having no idea where you with a random naked person next to you. Oh no! You think you might not have used a condom";
 		String[] answers5ab = {"A. Who cares! If I leave now, I can still make it to brunch at hill.", "B. We should probably get some emergency contraception", "C. Ugh, maybe if I just go back to sleep, this whole situation will resolve itself.", "D. Why is there a whole in my pants?"};
-		QuestionI question5ab = new Question(questionS5ab, answers5ab);
+		QuestionI question5ab = new Question(questionS5ab, answers5ab, true);
 		
 		String questionS5c = "As you're enjoying a nice, cold glass of water, some person comes up to you and starts talking and they're soooo hawt!";
 		String[] answers5c = {"A. Drop the pants right meow", "B. I'm too drunk to even talk to people right now. I should go home", "C. Lesgo go home", "D. Attractive people are scary. Play dead and maybe they'll leave you alone."};
-		QuestionI question5c = new Question(questionS5c, answers5c);
+		QuestionI question5c = new Question(questionS5c, answers5c, true);
 		
 		String questionS4 = "You are getting really drunk. What should you do now?";
 		String[] answers4 = {"A. Switch to beer. You can't get drunk off beer.", "B. MORE SHOTS!!!", "C. Drink some water", "D. Ooooh, dammmn who that over there?"};
