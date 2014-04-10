@@ -40,6 +40,12 @@ public class FullscreenActivity extends Activity {
 		Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
 		intent.putExtra("feedback", feedback);
 		FullscreenActivity.this.startActivityForResult(intent, 1);
+		try {
+			Thread.sleep(300);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setViews();
 	}
 
@@ -50,6 +56,12 @@ public class FullscreenActivity extends Activity {
 		Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
 		intent.putExtra("feedback", feedback);
 		FullscreenActivity.this.startActivityForResult(intent, 1);
+		try {
+			Thread.sleep(300);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setViews();
 	}
 
@@ -60,6 +72,12 @@ public class FullscreenActivity extends Activity {
 		Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
 		intent.putExtra("feedback", feedback);
 		FullscreenActivity.this.startActivityForResult(intent, 1);
+		try {
+			Thread.sleep(300);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setViews();
 	}
 
@@ -70,6 +88,12 @@ public class FullscreenActivity extends Activity {
 		Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
 		intent.putExtra("feedback", feedback);
 		FullscreenActivity.this.startActivityForResult(intent, 1);
+		try {
+			Thread.sleep(300);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setViews();
 	}
 
@@ -103,12 +127,12 @@ public class FullscreenActivity extends Activity {
 		String[] answers5ab = {"A. Who cares! If I leave now, I can still make it to brunch at hill.", "B. We should probably get some emergency contraception", "C. Ugh, maybe if I just go back to sleep, this whole situation will resolve itself.", "D. Why is there a whole in my pants?"};
 		QuestionI question5ab = new Question(questionS5ab, answers5ab);
 		
-		String questionS5c = "As you’re enjoying a nice, cold glass of water, some person comes up to you and starts talking… and they’re soooo hawt!";
-		String[] answers5c = {"A. Drop the pants right meow", "B. I’m too drunk to even talk to people right now. I should go home", "C. Lesgo go home", "D. Attractive people are scary. Play dead and maybe they’ll leave you alone."};
+		String questionS5c = "As you're enjoying a nice, cold glass of water, some person comes up to you and starts talking and they're soooo hawt!";
+		String[] answers5c = {"A. Drop the pants right meow", "B. I'm too drunk to even talk to people right now. I should go home", "C. Lesgo go home", "D. Attractive people are scary. Play dead and maybe they'll leave you alone."};
 		QuestionI question5c = new Question(questionS5c, answers5c);
 		
 		String questionS4 = "You are getting really drunk. What should you do now?";
-		String[] answers4 = {"A. Switch to beer. You can’t get drunk off beer.", "B. MORE SHOTS!!!", "C. Drink some water", "D. Ooooh, dammmn who that over there?"};
+		String[] answers4 = {"A. Switch to beer. You can't get drunk off beer.", "B. MORE SHOTS!!!", "C. Drink some water", "D. Ooooh, dammmn who that over there?"};
 		String[] feedback4 = {"Good job!", "Good job!", "no", "no"};
 		int[][] point4 = {{-10, -10, -10}, {5, 5, 5}, {-10, -10, -10}, {10, 10, 10}};
 		QuestionI[] nextQs4 = {question5ab, question5ab, question5c, question5c};
@@ -121,8 +145,8 @@ public class FullscreenActivity extends Activity {
 		QuestionI[] nextQs3 = {question4, question4, question4, question4};
 		QuestionI question3 = new Question(questionS3, answers3, nextQs3, feedback3, point3);
 		
-		String questionS2 = "Oh no! You’re broke... but you still want to be safe. Where can you get free condoms?";
-		String[] answers2 = {"A. SHS", "B. 7 Eleven", "C. CHOP", "D. Your friend’s room"};
+		String questionS2 = "Oh no! You're broke... but you still want to be safe. Where can you get free condoms?";
+		String[] answers2 = {"A. SHS", "B. 7 Eleven", "C. CHOP", "D. Your friend's room"};
 		String[] feedback2 = {"Good job!", "no", "no", "no"};
 		int[][] point2 = {{10, 0, 10}, {-5, 0, -5}, {-5, 0, -5}, {5, 0, 5}};
 		QuestionI[] nextQs2 = {question3, question3, question3, question3};
