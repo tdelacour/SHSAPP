@@ -7,7 +7,7 @@ public class Question implements QuestionI {
 	private QuestionI[] nextQs;
 	private String[] feedback;
 	private int[][] points;
-	public boolean isFinal;
+	private boolean isFinal = false;
 
 	public Question (){
 		// Initialize question string
@@ -94,6 +94,10 @@ public class Question implements QuestionI {
 			return points[i];
 		}
 		else throw new IndexOutOfBoundsException();
+	}
+	
+	public boolean getFinal(){
+		return isFinal;
 	}
 
 }

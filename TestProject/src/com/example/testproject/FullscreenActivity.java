@@ -31,70 +31,98 @@ public class FullscreenActivity extends Activity {
 	public void onAnswer1(View view){
 		// Update question object and XML
 		String feedback = curQuestion.getFeedback(1);
-		curQuestion = curQuestion.getNextQuestions()[0];
 		
 		// Update score
 		health.updateAll(curQuestion.getPoints(1));
 		
-		// Open the Feedback pop-up
-		Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
-		intent.putExtra("feedback", feedback);
-		FullscreenActivity.this.startActivityForResult(intent, 1);
-		try {
-			Thread.sleep(300);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		// Open the Feedback pop-up or end screen
+		if (curQuestion.getFinal()){
+			Intent intent = new Intent(FullscreenActivity.this, EndScreenActivity.class);
+			FullscreenActivity.this.startActivity(intent);
+			finish();
 		}
-		setViews();
+		else{
+			curQuestion = curQuestion.getNextQuestions()[0];
+			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
+			intent.putExtra("feedback", feedback);
+			FullscreenActivity.this.startActivityForResult(intent, 1);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			setViews();
+		}
 	}
 
 	public void onAnswer2(View view){
 		String feedback = curQuestion.getFeedback(2);
-		curQuestion = curQuestion.getNextQuestions()[1];
 		health.updateAll(curQuestion.getPoints(2));
-		Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
-		intent.putExtra("feedback", feedback);
-		FullscreenActivity.this.startActivityForResult(intent, 1);
-		try {
-			Thread.sleep(300);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (curQuestion.getFinal()){
+			Intent intent = new Intent(FullscreenActivity.this, EndScreenActivity.class);
+			FullscreenActivity.this.startActivity(intent);
+			finish();
 		}
-		setViews();
+		else{
+			curQuestion = curQuestion.getNextQuestions()[1];
+			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
+			intent.putExtra("feedback", feedback);
+			FullscreenActivity.this.startActivityForResult(intent, 1);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			setViews();
+		}
 	}
 
 	public void onAnswer3(View view){
 		String feedback = curQuestion.getFeedback(3);
-		curQuestion = curQuestion.getNextQuestions()[2];
 		health.updateAll(curQuestion.getPoints(3));
-		Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
-		intent.putExtra("feedback", feedback);
-		FullscreenActivity.this.startActivityForResult(intent, 1);
-		try {
-			Thread.sleep(300);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (curQuestion.getFinal()){
+			Intent intent = new Intent(FullscreenActivity.this, EndScreenActivity.class);
+			FullscreenActivity.this.startActivity(intent);
+			finish();
 		}
-		setViews();
+		else{
+			curQuestion = curQuestion.getNextQuestions()[2];
+			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
+			intent.putExtra("feedback", feedback);
+			FullscreenActivity.this.startActivityForResult(intent, 1);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			setViews();
+		}
 	}
 
 	public void onAnswer4(View view){
 		String feedback = curQuestion.getFeedback(4);
-		curQuestion = curQuestion.getNextQuestions()[3];
 		health.updateAll(curQuestion.getPoints(4));
-		Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
-		intent.putExtra("feedback", feedback);
-		FullscreenActivity.this.startActivityForResult(intent, 1);
-		try {
-			Thread.sleep(300);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (curQuestion.getFinal()){
+			Intent intent = new Intent(FullscreenActivity.this, EndScreenActivity.class);
+			FullscreenActivity.this.startActivity(intent);
+			finish();
 		}
-		setViews();
+		else{
+			curQuestion = curQuestion.getNextQuestions()[3];
+			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
+			intent.putExtra("feedback", feedback);
+			FullscreenActivity.this.startActivityForResult(intent, 1);
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			setViews();
+		}
 	}
 
 	// reset layout
@@ -131,25 +159,11 @@ public class FullscreenActivity extends Activity {
 		String[] answers5c = {"A. Drop the pants right meow", "B. I'm too drunk to even talk to people right now. I should go home", "C. Lesgo go home", "D. Attractive people are scary. Play dead and maybe they'll leave you alone."};
 		QuestionI question5c = new Question(questionS5c, answers5c, true);
 		
-		String questionS4 = "You are getting really drunk. What should you do now?";
-		String[] answers4 = {"A. Switch to beer. You can't get drunk off beer.", "B. MORE SHOTS!!!", "C. Drink some water", "D. Ooooh, dammmn who that over there?"};
-		String[] feedback4 = {"Good job!", "Good job!", "no", "no"};
-		int[][] point4 = {{-10, -10, -10}, {5, 5, 5}, {-10, -10, -10}, {10, 10, 10}};
-		QuestionI[] nextQs4 = {question5ab, question5ab, question5c, question5c};
-		QuestionI question4 = new Question(questionS4, answers4, nextQs4, feedback4, point4);
-		
-		String questionS3 = "You go to the party. What do you want to watch out for?";
-		String[] answers3 = {"A. Accepting drinks from strangers", "B. Getting raped", "C. Making out with that random person", "D. Getting an embarrassing picture taken of you."};
-		String[] feedback3 = {"Good job!", "Good job!", "no", "no"};
-		int[][] point3 = {{5, 5, 5}, {2, 10, 2}, {0, 2, 2}, {0, 0, 0}};
-		QuestionI[] nextQs3 = {question4, question4, question4, question4};
-		QuestionI question3 = new Question(questionS3, answers3, nextQs3, feedback3, point3);
-		
 		String questionS2 = "Oh no! You're broke... but you still want to be safe. Where can you get free condoms?";
 		String[] answers2 = {"A. SHS", "B. 7 Eleven", "C. CHOP", "D. Your friend's room"};
 		String[] feedback2 = {"Good job!", "no", "no", "no"};
 		int[][] point2 = {{10, 0, 10}, {-5, 0, -5}, {-5, 0, -5}, {5, 0, 5}};
-		QuestionI[] nextQs2 = {question3, question3, question3, question3};
+		QuestionI[] nextQs2 = {question5ab, question5ab, question5c, question5c};
 		QuestionI question2 = new Question(questionS2, answers2, nextQs2, feedback2, point2);
 
 		String questionS1 = "You are going out tonight. What do you want to bring?";

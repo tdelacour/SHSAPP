@@ -26,7 +26,13 @@
         </activity>
         <activity
             android:name="com.example.testproject.FeedbackActivity"
-            android:label="@string/Feedback">
+            android:label="@string/Feedback" >
+        </activity>
+        <activity
+            android:name="com.example.testproject.EndScreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_end_screen"
+            android:theme="@style/FullscreenTheme" >
         </activity>
     </application>
 
