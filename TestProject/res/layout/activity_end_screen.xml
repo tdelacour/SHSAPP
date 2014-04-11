@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/feedback_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:text="@string/feedbackPop"
+        android:textColor="#33b5e5"
+        android:textSize="30sp"
+        android:textStyle="bold" 
+        android:padding="20dp"/>
+        
+         <LinearLayout
+            android:id="@+id/endScreen_controls"
+            style="?buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="vertical">
+
+        	<Button
+            	android:id="@+id/playAgain"
+  	 	    	style="?buttonBarButtonStyle"
+      	    	android:layout_width="fill_parent"
+      	    	android:layout_height="wrap_content"
+      	    	android:text="@string/PlayAgain"
+       	    	android:onClick="onPlayAgain"/>
+        
+        	<Button
+            	android:id="@+id/exit"
+  	 	    	style="?buttonBarButtonStyle"
+      	    	android:layout_width="fill_parent"
+      	    	android:layout_height="wrap_content"
+      	    	android:text="@string/Exit"
+       	    	android:onClick="onExit"/>
+        	
+        </LinearLayout>
+            
+    
+</LinearLayout>
