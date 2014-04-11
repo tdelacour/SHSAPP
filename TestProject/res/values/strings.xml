@@ -17,5 +17,8 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="PlayAgain">Replay!</string>
     <string name="Exit">Exit!</string>
+    <string name="title_activity_intro">IntroActivity</string>
+    <string name="play">Play!</string>
+    <string name="intro">This is the intro screen</string>
 
 </resources>
