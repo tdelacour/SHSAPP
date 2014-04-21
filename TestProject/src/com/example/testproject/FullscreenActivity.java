@@ -14,6 +14,7 @@ public class FullscreenActivity extends Activity {
 
 	private QuestionI curQuestion;
 	private HealthView health;
+	private Point dimension;
 
 	@SuppressLint("NewApi")
 	@Override
@@ -28,6 +29,7 @@ public class FullscreenActivity extends Activity {
 		Point size = new Point();
 		display.getSize(size);
 		health.setDimension(size);
+		dimension = size;
 		
 		setViews(); //Initialize question and answer fields
 	}
@@ -137,6 +139,9 @@ public class FullscreenActivity extends Activity {
 
 	// reset layout
 	private void setViews(){
+		//Calculate text size
+		
+		
 		//question
 		TextView question = (TextView) findViewById(R.id.fullscreen_content);
 		question.setText(curQuestion.getQuestion());

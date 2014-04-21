@@ -20,21 +20,24 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_height="0dip"
+        android:layout_weight="1"
         android:orientation="horizontal" >
 
         <com.example.testproject.HealthView
             android:id="@+id/healthView"
-            android:layout_width="0dip"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_gravity="bottom"
             android:paddingLeft="5dp"
             android:paddingTop="15dp" />
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:gravity="right|bottom"
+            android:layout_marginLeft="100dip"
             android:contentDescription="@string/stick_image"
             android:src="@drawable/sticksolo" />
     </LinearLayout>
@@ -43,7 +46,7 @@
         android:id="@+id/fullscreen_content_controls"
         style="?buttonBarStyle"
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="bottom"
         android:layout_gravity="bottom"
         android:background="@color/black_overlay"
@@ -54,7 +57,8 @@
             android:id="@+id/answer1"
             style="?buttonBarButtonStyle"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dip"
+            android:layout_weight="1"
             android:gravity="center_vertical"
             android:onClick="onAnswer1"
             android:paddingLeft="50dp"
@@ -64,7 +68,8 @@
             android:id="@+id/answer2"
             style="?buttonBarButtonStyle"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dip"
+            android:layout_weight="1"
             android:gravity="center_vertical"
             android:onClick="onAnswer2"
             android:paddingLeft="50dp"
@@ -74,7 +79,8 @@
             android:id="@+id/answer3"
             style="?buttonBarButtonStyle"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dip"
+            android:layout_weight="1"
             android:gravity="center_vertical"
             android:onClick="onAnswer3"
             android:paddingLeft="50dp"
@@ -84,7 +90,8 @@
             android:id="@+id/answer4"
             style="?buttonBarButtonStyle"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dip"
+            android:layout_weight="1"
             android:gravity="center_vertical"
             android:onClick="onAnswer4"
             android:paddingLeft="50dp"
