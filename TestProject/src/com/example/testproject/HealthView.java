@@ -4,15 +4,18 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 
 public class HealthView extends View {
 	
-	private int pregnancy;
-	private int std;
-	private int legal;
+	private int alcohol;
+	private int sexual;
+	private int screenHeight;
+	private int screenWidth;	
 	private Paint paint = new Paint();
 	
 	public HealthView(Context context) {
@@ -26,71 +29,112 @@ public class HealthView extends View {
 	}
 	
 	private void init(){
-		pregnancy = 50;
-		legal = 50;
-		std = 50;
+		alcohol = 50;
+		sexual = 50;
 	}
 	
 	@Override
 	public void onDraw(Canvas c){
 		int red; int green; 
-		int left = getPaddingLeft();
-		int top = getPaddingTop();
+		int left = getPaddingLeft(); //offset from edge
+		int top = getPaddingTop(); //offset from edge
+		int height = screenHeight/40; //height of health fill
+		int spacer = screenHeight/50; //height of space btwn bars
+		int width = screenWidth/4; //width of health fill max
+		int widthAlc = width*alcohol/100; //width of health fill Alcohol
+		int widthSex = width*sexual/100; //width of health fill sexual
+		int ovalSize = width/5; //width of oval which creates cap ends
+		int borderVer = height/10; //width of border
+		int borderHor = ovalSize/2; //width of the healthbar cap ends
+		
+		//Some calculations
+		int fillLeft = left + borderHor;
+		int alcFillTop = top + borderVer;
+		int alcFillRight = fillLeft + widthAlc;
+		int alcFillBot = top + borderVer + height;
+		int alcEmptyRight = fillLeft + width;
+		int oval1Right = left + ovalSize;
+		int alcOval1Bot = top + height + 2*borderVer;
+		int oval2Left = left + width;
+		int oval2Right = oval2Left + ovalSize;
+		int borderWidth = left + width + borderHor;
+		int border1Bot = top + borderVer;
+		int border2Top = top + height + borderVer;
+		int border2Bot = top + height + 2*borderVer;
+		int sexFillTop = top + 3*borderVer + height + spacer;
+		int sexFillRight = fillLeft + widthSex;
+		int sexFillBot = top + 2*height + 3*borderVer + spacer;
+		int sexEmptyRight = left + borderHor + width;
+		int oval3Bot = top + 2*height + spacer + 4*borderVer;
+		int border3Top = top + height + spacer + 3*borderVer;
+		int border3Bot = top + height + spacer + 4*borderVer;
+		int border4Top = top + 2*height + spacer + 3*borderVer;
+		int border4Bot = top + 2*height+ spacer + 4*borderVer;
+		
+		//Universal
 		paint.setStyle(Paint.Style.FILL);
 		paint.setTextSize(20);
 		paint.setTypeface(Typeface.DEFAULT_BOLD);
 		
-		//Color for pregnancy
-		red = (int)((100 - pregnancy) * 1.75);
-		green = (int)(pregnancy * 1.75);	
-		paint.setColor(Color.rgb(red, green, 0));
+		//Color for alcohol
+		red = (int)((100 - alcohol) * 1.75);
+		green = (int)(alcohol * 1.75);	
+		paint.setColor(Color.rgb(red, green, 0)); //***Color Tag***
 		
-		//Draw pregnancy rectangle
-		c.drawRect(left, top, left + 2*pregnancy + 2, top + 30, paint);
-		paint.setColor(Color.rgb(51, 181, 229));
-		c.drawText("Pregnancy", left + 2, top + 23, paint);
+		//Draw alcohol health fill
+		c.drawRect(fillLeft, alcFillTop, alcFillRight, alcFillBot, paint);
+		paint.setColor(Color.rgb(51, 181, 229)); //***Color Tag***
+		c.drawRect(alcFillRight,  alcFillTop, alcEmptyRight, alcFillBot, paint);
 		
-		//legal
-		red = (int)((100 - legal) * 1.75);
-		green = (int)(legal * 1.75);	
-		paint.setColor(Color.rgb(red, green, 0));
-		c.drawRect(left, top + 50, left + 2*legal + 2, top + 80, paint);
-		paint.setColor(Color.rgb(51, 181, 229));
-		c.drawText("Rape", left + 2, top + 73, paint);
+		//Shell
+		paint.setColor(Color.DKGRAY); //**Color Tag***
+		RectF oval = new RectF(left, top, oval1Right, alcOval1Bot);
+		c.drawArc(oval, 90, 180, true, paint);
+		oval = new RectF(oval2Left, top, oval2Right, alcOval1Bot);
+		c.drawArc(oval, 270, 180, true, paint);
+		c.drawRect(fillLeft, top, borderWidth, border1Bot, paint);
+		c.drawRect(fillLeft, border2Top, borderWidth, border2Bot, paint);
 		
-		//std
-		red = (int)((100 - std) * 1.75);
-		green = (int)(std * 1.75);	
-		paint.setColor(Color.rgb(red, green, 0));
-		c.drawRect(left, top + 100, left + 2*std + 2, top + 130, paint);
-		paint.setColor(Color.rgb(51, 181, 229));
-		c.drawText("STD", left + 2, top + 123, paint);
+		//sexual
+		red = (int)((100 - sexual) * 1.75);
+		green = (int)(sexual * 1.75);	
+		paint.setColor(Color.rgb(red, green, 0)); //***Color Tag***
+		c.drawRect(fillLeft, sexFillTop, sexFillRight, sexFillBot, paint);
+		paint.setColor(Color.rgb(51, 181, 229)); //***Color Tag***
+		c.drawRect(sexFillRight, sexFillTop, sexEmptyRight, sexFillBot, paint);
+		paint.setColor(Color.DKGRAY); //***Color Tag***
+		oval = new RectF(left, sexFillTop, oval1Right, oval3Bot);
+		c.drawArc(oval, 90, 180, true, paint);
+		oval = new RectF(oval2Left, sexFillTop, oval2Right, oval3Bot);
+		c.drawArc(oval, 270, 180, true, paint);
+		c.drawRect(fillLeft, border3Top, borderWidth, border3Bot, paint);
+		c.drawRect(fillLeft, border4Top, borderWidth, border4Bot, paint);
 	}
 	
-	public void updatePreg(int x){
-		pregnancy += x;
+	public void updateAlcohol(int x){
+		alcohol += x;
 	}
 	
-	public void updateSTD(int x){
-		std += x;
-	}
-	
-	public void updateLegal(int x){
-		legal += x;
+	public void updateSexual(int x){
+		sexual += x;
 	}
 	
 	public void updateAll(int[] x){
-		pregnancy += x[0];
-		legal += x[1];
-		std += x[2];
+		alcohol += x[0];
+		sexual += x[1];
+	}
+	
+	public void setDimension(Point dim){
+		screenWidth = dim.x;
+		screenHeight = dim.y;
 	}
 	
 	//yay google...
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
-	    int desiredWidth = 220;
-	    int desiredHeight = 200;
+	    int desiredWidth = getPaddingLeft() + 12*screenWidth/40;
+	    int desiredHeight = screenHeight/9;
 
 	    int widthMode = MeasureSpec.getMode(widthMeasureSpec);
 	    int widthSize = MeasureSpec.getSize(widthMeasureSpec);

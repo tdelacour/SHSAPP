@@ -1087,6 +1087,7 @@ containing a value of this type.
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
         public static final int ic_launcher=0x7f020057;
+        public static final int sticksolo=0x7f020058;
     }
     public static final class id {
         public static final int CloseFeedback=0x7f050040;
@@ -1282,6 +1283,7 @@ containing a value of this type.
         public static final int hello_world=0x7f0a0017;
         public static final int intro=0x7f0a001f;
         public static final int play=0x7f0a001e;
+        public static final int stick_image=0x7f0a0020;
         public static final int title_activity_end_screen=0x7f0a0019;
         public static final int title_activity_feedback=0x7f0a0016;
         public static final int title_activity_intro=0x7f0a001d;

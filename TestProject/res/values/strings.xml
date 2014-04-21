@@ -20,5 +20,6 @@
     <string name="title_activity_intro">IntroActivity</string>
     <string name="play">Play!</string>
     <string name="intro">This is the intro screen</string>
+    <string name="stick_image">stick figure</string>
 
 </resources>

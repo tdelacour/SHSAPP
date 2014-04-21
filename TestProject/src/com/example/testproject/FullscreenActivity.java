@@ -1,8 +1,11 @@
 package com.example.testproject;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +15,7 @@ public class FullscreenActivity extends Activity {
 	private QuestionI curQuestion;
 	private HealthView health;
 
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -19,6 +23,12 @@ public class FullscreenActivity extends Activity {
 		makeTree(); // build story tree
 		setContentView(R.layout.activity_fullscreen); //XML layout 
 		health = (HealthView) findViewById(R.id.healthView);
+		
+		Display display = getWindowManager().getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		health.setDimension(size);
+		
 		setViews(); //Initialize question and answer fields
 	}
 
@@ -127,17 +137,11 @@ public class FullscreenActivity extends Activity {
 
 	// reset layout
 	private void setViews(){
-		// question
+		//question
 		TextView question = (TextView) findViewById(R.id.fullscreen_content);
 		question.setText(curQuestion.getQuestion());
 
-		// answers: concatenates curQuestion answers with default ("A", "B", etc)
-		/* 
-		 * So I generalized QuestionI objects to be able to take any number 
-		 * of answers, but realize here that this is sort of set by the total
-		 * number of buttons we define in the XML itself. Ideas for generalizing?
-		 *  -TD
-		 */
+		//answers
 		String[] strArr = curQuestion.getAnswers(); 		
 		Button mButton=(Button)findViewById(R.id.answer1);
 		mButton.setText(strArr[0]);
@@ -235,10 +239,10 @@ private void makeTree(){
 	
 	private QuestionI makeQuestion3(){
 		String questionS = "You go to the party. What do you want to watch out for?";
-		String[] answers = {"A. Accepting drinks from strangers", "B. Getting raped", "C. Making out with that random person", "D. Getting an embarrassing picture taken of you."};
+		String[] answers = {"A. Accepting drinks from strangers", "B. All the hotties", "C. That random person trying to make out with you", "D. Getting an embarrassing picture taken of you."};
 		String feed1 = "Yes, that is very important!";
-		String feed2 = "Maybe this is not as important as accepting drinks from strangers or getting raped...";
-		String[] feedback = {feed1, feed1, feed2, feed2};
+		String feed2 = "Maybe this is not as important as accepting drinks from strangers or avoiding creepers...";
+		String[] feedback = {feed1, feed2, feed1, feed2};
 		int[][] point = {{5, 5, 5}, {0, 10, 0}, {-5, -5, -5}, {-5, -5, -5}};
 		QuestionI[] nextQs1 = new QuestionI[4];
 		return new Question(questionS, answers, nextQs1, feedback, point);
