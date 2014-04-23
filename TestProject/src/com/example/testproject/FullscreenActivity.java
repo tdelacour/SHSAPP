@@ -139,11 +139,114 @@ public class FullscreenActivity extends Activity {
 
 	// reset layout
 	private void setViews(){
-		//Calculate text size
+		//textview reference
+		TextView question = (TextView) findViewById(R.id.fullscreen_content);
+		String nextq = curQuestion.getQuestion();
+		int len = nextq.length();
 		
+		//Calculate text size
+		if (dimension.x > 2400 && dimension.y > 1450){
+			if (len > 140){
+				question.setTextSize(100);
+			}
+			else if (len > 120){
+				question.setTextSize(112);
+			}
+			else if (len > 100){
+				question.setTextSize(120);
+			}
+			else if (len > 80){
+				question.setTextSize(132);
+			}
+			else if (len > 60){
+				question.setTextSize(140);
+			}
+			else {
+				question.setTextSize(152);
+			}	
+		}
+		else if (dimension.x > 1050 && dimension.y > 1800){
+			if (len > 140){
+				question.setTextSize(50);
+			}
+			else if (len > 120){
+				question.setTextSize(56);
+			}
+			else if (len > 100){
+				question.setTextSize(60);
+			}
+			else if (len > 80){
+				question.setTextSize(66);
+			}
+			else if (len > 60){
+				question.setTextSize(70);
+			}
+			else {
+				question.setTextSize(76);
+			}		
+		}
+		else if (dimension.x > 700 && dimension.y > 1150){
+			if (len > 140){
+				question.setTextSize(25);
+			}
+			else if (len > 120){
+				question.setTextSize(28);
+			}
+			else if (len > 100){
+				question.setTextSize(30);
+			}
+			else if (len > 80){
+				question.setTextSize(33);
+			}
+			else if (len > 60){
+				question.setTextSize(35);
+			}
+			else {
+				question.setTextSize(38);
+			}	
+		}
+		else if (dimension.x > 450 && dimension.y > 750){
+			if (len > 140){
+				question.setTextSize(12);
+			}
+			else if (len > 120){
+				question.setTextSize(13);
+			}
+			else if (len > 100){
+				question.setTextSize(14);
+			}
+			else if (len > 80){
+				question.setTextSize(16);
+			}
+			else if (len > 60){
+				question.setTextSize(17);
+			}
+			else {
+				question.setTextSize(18);
+			}		
+		}
+		else {
+			if (len > 140){
+				question.setTextSize(5);
+			}
+			else if (len > 120){
+				question.setTextSize(6);
+			}
+			else if (len > 100){
+				question.setTextSize(7);
+			}
+			else if (len > 80){
+				question.setTextSize(8);
+			}
+			else if (len > 60){
+				question.setTextSize(9);
+			}
+			else {
+				question.setTextSize(10);
+			}		
+		}
 		
 		//question
-		TextView question = (TextView) findViewById(R.id.fullscreen_content);
 		question.setText(curQuestion.getQuestion());
 
 		//answers

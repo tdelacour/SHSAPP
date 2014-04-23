@@ -13,6 +13,7 @@
         android:layout_gravity="left"
         android:gravity="left"
         android:paddingTop="50dp"
+        android:paddingLeft="5dp"
         android:text="@string/dummy_content"
         android:textColor="#33b5e5"
         android:textSize="25sp"
