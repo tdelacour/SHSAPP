@@ -7,7 +7,7 @@ public class Question implements QuestionI {
 	private QuestionI[] nextQs;
 	private String[] feedback;
 	private int[][] points;
-	private boolean isFinal = false;
+	private boolean[] isFinal;
 
 	public Question (){
 		// Initialize question string
@@ -30,7 +30,7 @@ public class Question implements QuestionI {
 		}
 	}
 
-	public Question (String q, String[] answers, QuestionI[] nextQs, String[] feedback, int[][] points){
+	public Question (String q, String[] answers, QuestionI[] nextQs, String[] feedback, int[][] points, boolean[] isFinal){
 		this.question = q;
 
 		int arrLen = Math.min(Math.min(answers.length, nextQs.length), feedback.length);
@@ -38,27 +38,13 @@ public class Question implements QuestionI {
 		this.answers = new String[arrLen];
 		this.nextQs = new QuestionI[arrLen];
 		this.feedback = new String[arrLen];
-		this.points = new int[arrLen][3];
+		this.points = new int[arrLen][2];
+		this.isFinal = new boolean[arrLen];
+		
 		for (int i = 0; i < arrLen; i++){ 
+			this.isFinal[i] = isFinal[i];
 			this.answers[i] = answers[i];
 			this.nextQs[i] = nextQs[i];
-			this.feedback[i] = feedback[i];
-			this.points[i][0] = points[i][0];
-			this.points[i][1] = points[i][1];
-		}
-	}
-
-	public Question (String q, String[] answers, String[] feedback, int[][]points, boolean isFinal){
-		this.question = q;
-		this.isFinal = isFinal;
-
-		this.answers = new String[answers.length];
-		this.nextQs = new QuestionI[answers.length];
-		this.feedback = new String[4];
-		this.points = new int[answers.length][3];
-		for (int i = 0; i < answers.length; i++){ 
-			this.answers[i] = answers[i];
-			this.nextQs[i] = this;
 			this.feedback[i] = feedback[i];
 			this.points[i][0] = points[i][0];
 			this.points[i][1] = points[i][1];
@@ -93,7 +79,7 @@ public class Question implements QuestionI {
 		else throw new IndexOutOfBoundsException();
 	}
 	
-	public boolean getFinal(){
+	public boolean[] getFinal(){
 		return isFinal;
 	}
 

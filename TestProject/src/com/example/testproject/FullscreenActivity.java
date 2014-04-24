@@ -48,10 +48,12 @@ public class FullscreenActivity extends Activity {
 		health.updateAll(curQuestion.getPoints(1));
 
 		// Open the Feedback pop-up or end screen
-		if (curQuestion.getFinal()){
+		if (curQuestion.getFinal()[0]){
 			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
-			intent.putExtra("isFinal", curQuestion.getFinal());
+			intent.putExtra("isFinal", curQuestion.getFinal()[0]);
 			intent.putExtra("feedback", feedback);
+			intent.putExtra("alcohol", curQuestion.getPoints(1)[0]);
+			intent.putExtra("sexual", curQuestion.getPoints(1)[1]);
 			FullscreenActivity.this.startActivity(intent);
 			finish();
 		}
@@ -59,18 +61,21 @@ public class FullscreenActivity extends Activity {
 			curQuestion = curQuestion.getNextQuestions()[0];
 			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
 			intent.putExtra("feedback", feedback);
+			intent.putExtra("alcohol", curQuestion.getPoints(1)[0]);
+			intent.putExtra("sexual", curQuestion.getPoints(1)[1]);
 			FullscreenActivity.this.startActivityForResult(intent, 1);
-			setViews();
 		}
 	}
 
 	public void onAnswer2(View view){
 		String feedback = curQuestion.getFeedback(2);
 		health.updateAll(curQuestion.getPoints(2));
-		if (curQuestion.getFinal()){
+		if (curQuestion.getFinal()[1]){
 			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
-			intent.putExtra("isFinal", curQuestion.getFinal());
+			intent.putExtra("isFinal", curQuestion.getFinal()[1]);
 			intent.putExtra("feedback", feedback);
+			intent.putExtra("alcohol", curQuestion.getPoints(2)[0]);
+			intent.putExtra("sexual", curQuestion.getPoints(2)[1]);
 			FullscreenActivity.this.startActivity(intent);
 			finish();
 		}
@@ -78,18 +83,21 @@ public class FullscreenActivity extends Activity {
 			curQuestion = curQuestion.getNextQuestions()[1];
 			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
 			intent.putExtra("feedback", feedback);
+			intent.putExtra("alcohol", curQuestion.getPoints(2)[0]);
+			intent.putExtra("sexual", curQuestion.getPoints(2)[1]);
 			FullscreenActivity.this.startActivityForResult(intent, 1);
-			setViews();
 		}
 	}
 
 	public void onAnswer3(View view){
 		String feedback = curQuestion.getFeedback(3);
 		health.updateAll(curQuestion.getPoints(3));
-		if (curQuestion.getFinal()){
+		if (curQuestion.getFinal()[2]){
 			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
-			intent.putExtra("isFinal", curQuestion.getFinal());
+			intent.putExtra("isFinal", curQuestion.getFinal()[2]);
 			intent.putExtra("feedback", feedback);
+			intent.putExtra("alcohol", curQuestion.getPoints(3)[0]);
+			intent.putExtra("sexual", curQuestion.getPoints(3)[1]);
 			FullscreenActivity.this.startActivity(intent);
 			finish();
 		}
@@ -97,18 +105,21 @@ public class FullscreenActivity extends Activity {
 			curQuestion = curQuestion.getNextQuestions()[2];
 			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
 			intent.putExtra("feedback", feedback);
+			intent.putExtra("alcohol", curQuestion.getPoints(3)[0]);
+			intent.putExtra("sexual", curQuestion.getPoints(3)[1]);
 			FullscreenActivity.this.startActivityForResult(intent, 1);
-			setViews();
 		}
 	}
 
 	public void onAnswer4(View view){
 		String feedback = curQuestion.getFeedback(4);
 		health.updateAll(curQuestion.getPoints(4));
-		if (curQuestion.getFinal()){
+		if (curQuestion.getFinal()[3]){
 			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
-			intent.putExtra("isFinal", curQuestion.getFinal());
+			intent.putExtra("isFinal", curQuestion.getFinal()[3]);
 			intent.putExtra("feedback", feedback);
+			intent.putExtra("alcohol", curQuestion.getPoints(4)[0]);
+			intent.putExtra("sexual", curQuestion.getPoints(4)[1]);
 			FullscreenActivity.this.startActivity(intent);
 			finish();
 		}
@@ -116,9 +127,15 @@ public class FullscreenActivity extends Activity {
 			curQuestion = curQuestion.getNextQuestions()[3];
 			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
 			intent.putExtra("feedback", feedback);
+			intent.putExtra("alcohol", curQuestion.getPoints(4)[0]);
+			intent.putExtra("sexual", curQuestion.getPoints(4)[1]);
 			FullscreenActivity.this.startActivityForResult(intent, 1);
-			setViews();
 		}
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    setViews();
 	}
 
 	// reset layout
@@ -248,8 +265,8 @@ public class FullscreenActivity extends Activity {
 		mButton.setText(strArr[3]);
 	}
 
-	private void makeTree(){
-
+private void makeTree(){
+		
 		QuestionI question1 = makeQuestion1();
 		QuestionI question2 = makeQuestion2();
 		QuestionI question3 = makeQuestion3();
@@ -260,64 +277,65 @@ public class FullscreenActivity extends Activity {
 		QuestionI question16 = makeQuestion16();
 		QuestionI question18 = makeQuestion18();
 		QuestionI question19 = makeQuestion19();
-
+		
 		//Connect everything
 		question1.getNextQuestions()[0] = question2;
 		question1.getNextQuestions()[1] = question2;
 		question1.getNextQuestions()[2] = question3;
 		question1.getNextQuestions()[3] = question3;
-
+		
 		question2.getNextQuestions()[0] = question3;
 		question2.getNextQuestions()[1] = question3;
 		question2.getNextQuestions()[2] = question3;
 		question2.getNextQuestions()[3] = question3;
-
+		
 		question3.getNextQuestions()[0] = question6;
 		question3.getNextQuestions()[1] = question6;
 		question3.getNextQuestions()[2] = question6;
 		question3.getNextQuestions()[3] = question6;
-
+		
 		question6.getNextQuestions()[0] = question4;
 		question6.getNextQuestions()[1] = question4;
 		question6.getNextQuestions()[2] = question4;
 		question6.getNextQuestions()[3] = question4;
-
+		
 		question4.getNextQuestions()[0] = question15;
 		question4.getNextQuestions()[1] = question15;
 		question4.getNextQuestions()[2] = question5;
 		question4.getNextQuestions()[3] = question15;//update
-
+		
 		question5.getNextQuestions()[0] = question1;
 		question5.getNextQuestions()[1] = question1;
 		question5.getNextQuestions()[2] = question15;//update
 		question5.getNextQuestions()[3] = question1;
-
+		
 		question15.getNextQuestions()[0] = question16;
 		question15.getNextQuestions()[1] = question16;
 		question15.getNextQuestions()[2] = question15;
 		question15.getNextQuestions()[3] = question15;
-
+		
 		question16.getNextQuestions()[0] = question18;
 		question16.getNextQuestions()[1] = question18;
 		question16.getNextQuestions()[2] = question18;
 		question16.getNextQuestions()[3] = question18;
-
+		
 		question18.getNextQuestions()[0] = question19;
 		question18.getNextQuestions()[1] = question19;
 		question18.getNextQuestions()[2] = question19;
 		question18.getNextQuestions()[3] = question19;
 		curQuestion = question1;
 	}
-
+	
 	private QuestionI makeQuestion1(){
 		String questionS = "You are going out tonight. What do you want to bring?";
 		String[] answers = {"A. Condoms", "B. A friend", "C. Extra pants", "D. Your cool new flask"};
-		String feed1 = "Great! Here are some other forms birth control:\n -Male condom\n -Female condom\n -The pill\n -Contraceptive patch\n -Birth control shot\n -Diaphragm\n -NuvaRing \n -Spermicide \n -Cervical cap\n -Intrauterine Device (IUD)\n -Vasectomy\n -Female sterilization\n  -Contraceptive film or implant ";
+		String feed1 = "Great! Here are some other forms birth control:\n -Male condom\n -Female condom\n -The pill\n -Contraceptive patch\n -Birth control shot\n -Diaphragm\n -NuvaRing \n -Spermicide \n -Cervical cap\n -Intrauterine Device (IUD)\n -Vasectomy\n -Female sterilization\n -Contraceptive film or implant ";
 		String feed2 = "Maybe you should have went with some birth control... here's a list of possible contraceptives:\n -Male condom\n -Female condom\n -The pill\n -Coontraceptive patch\n -Birth control shot\n -Diaphragm\n -NuvaRing \n -Spermicide \nCervical cap\n -Intrauterine Device (IUD)\n -Vasectomy\n -Female sterilization\n  -Contraceptive film or implant";
 		String[] feedback = {feed1, feed1, feed2, feed2};
 		int[][] point = {{10, 0, 10}, {-5, 10, -5}, {-10, -5, -10}, {-10, -10, -10}};
 		QuestionI[] nextQs = new QuestionI[4];
-		return new Question(questionS, answers, nextQs, feedback, point);
+		boolean[] isFinal = {false, false, false, false};
+		return new Question(questionS, answers, nextQs, feedback, point, isFinal);
 	}
 	private QuestionI makeQuestion2(){
 		String questionS = "Oh no! You're broke... but you still want to be safe. Where can you get free condoms?";
@@ -329,9 +347,10 @@ public class FullscreenActivity extends Activity {
 		String[] feedback = {feed1, feed2, feed3, feed4};
 		int[][] point = {{10, 0, 10}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
 		QuestionI[] nextQs1 = new QuestionI[4];
-		return new Question(questionS, answers, nextQs1, feedback, point);
+		boolean[] isFinal = {false, false, false, false};
+		return new Question(questionS, answers, nextQs1, feedback, point, isFinal);
 	}
-
+	
 	private QuestionI makeQuestion3(){
 		String questionS = "You head out to the party. What do you want to watch out for?";
 		String[] answers = {"A. Accepting drinks from strangers", "B. All the hotties", "C. That random person trying to make out with you", "D. Getting an embarrassing picture taken of you."};
@@ -340,7 +359,8 @@ public class FullscreenActivity extends Activity {
 		String[] feedback = {feed1, feed2, feed1, feed2};
 		int[][] point = {{5, 5, 5}, {0, 10, 0}, {-5, -5, -5}, {-5, -5, -5}};
 		QuestionI[] nextQs1 = new QuestionI[4];
-		return new Question(questionS, answers, nextQs1, feedback, point);
+		boolean[] isFinal = {false, false, false, false};
+		return new Question(questionS, answers, nextQs1, feedback, point, isFinal);
 	}
 	private QuestionI makeQuestion4(){
 		String questionS = "You are getting REALLY drunk. What should you do now?";
@@ -352,18 +372,20 @@ public class FullscreenActivity extends Activity {
 		String[] feedback = {feed1, feed2, feed3, feed4};
 		int[][] point = {{-25, -25, -25}, {-25, -25, -25}, {0, 0, 0}, {0, 0, 0}};
 		QuestionI[] nextQs1 = new QuestionI[4];
-		return new Question(questionS, answers, nextQs1, feedback, point);
+		boolean[] isFinal = {false, false, false, false};
+		return new Question(questionS, answers, nextQs1, feedback, point, isFinal);
 	}
 	private QuestionI makeQuestion5(){
 		String questionS = "As you're enjoying a nice, cold glass of water, some person comes up to you and starts talking and they're soooo hawt! What do you do!?!";
 		String[] answers = {"A. Drop the pants right meow", "B. I'm too drunk to even talk to people right now. I should go home", "C. Lesgo go home", "D. Attractive people are scary. Play dead and maybe they'll leave you alone."};
-		String feed1 = "For some reason that didn't work...I guess you're going hom alone tonight. Let's play again!";
+		String feed1 = "For some reason that didn't work...I guess you're going home alone tonight. Let's play again!";
 		String feed2 = "I guess you are done for the night...Let's play again!";
 		String feed3 = "Here we go...";
 		String[] feedback = {feed1, feed2, feed3, feed1};
 		int[][] point = {{0, 0, 0}, {100, 100, 100}, {0, 0, 0}, {0, 0, 0}};
 		QuestionI[] nextQs1 = new QuestionI[4];
-		return new Question(questionS, answers, nextQs1, feedback, point);
+		boolean[] isFinal = {true, true, false, true};
+		return new Question(questionS, answers, nextQs1, feedback, point, isFinal);
 	}
 	private QuestionI makeQuestion6(){
 		String questionS = "Someone comes up to you and hands you a strange purple drank.";
@@ -373,11 +395,12 @@ public class FullscreenActivity extends Activity {
 		String[] feedback = {feed1, feed1, feed2, feed2};
 		int[][] point = {{-10, -20, 10}, {-10, -20, -10}, {5, 5, 5}, {5, 5, 5}};
 		QuestionI[] nextQs1 = new QuestionI[4];
-		return new Question(questionS, answers, nextQs1, feedback, point);
+		boolean[] isFinal = {false, false, false, false};
+		return new Question(questionS, answers, nextQs1, feedback, point, isFinal);
 	}
 	private QuestionI makeQuestion15(){
 		String questionS = "You wake up having no idea where you are and with a random naked person next to you. Oh no! You think you might not have used a condom";
-		String[] answers = {"A. Who cares! If I leave now, I can still make it to brunch at hill.", "B. We should probably get some emergency contraception", "C. Ugh, maybe if I just go back to sleep, this whole situation will resolve itself.", "D. Why is there a whole in my pants?"};
+		String[] answers = {"A. Who cares! If I leave now, I can still make it to brunch at Hill.", "B. We should probably get some emergency contraception", "C. Ugh, maybe if I just go back to sleep, this whole situation will resolve itself.", "D. Why is there a whole in my pants?"};
 		String feed1 = "You shoudl care! There is a huge risk of an STD or pregnancy! You should probably get that checked out.";
 		String feed2 = "That's a great choice! Let's get some...";
 		String feed3 = "After you wake up the situation does not change...";
@@ -385,7 +408,8 @@ public class FullscreenActivity extends Activity {
 		String[] feedback = {feed1, feed2, feed3, feed4};
 		int[][] point = {{-10, 0, -10}, {10, 0, 10}, {0, 0, 0}, {0, 0, 0}};
 		QuestionI[] nextQs1 = new QuestionI[4];
-		return new Question(questionS, answers, nextQs1, feedback, point);
+		boolean[] isFinal = {false, false, false, false};
+		return new Question(questionS, answers, nextQs1, feedback, point, isFinal);
 	}
 	private QuestionI makeQuestion16(){
 		String questionS = "Where can we get some emergency contraception?";
@@ -394,19 +418,21 @@ public class FullscreenActivity extends Activity {
 		String[] feedback = {feed1, feed1, feed1, feed1};
 		int[][] point = {{0, 0, 10}, {0, 0, 10}, {0, 0, 10}, {0, 0, 20}};
 		QuestionI[] nextQs1 = new QuestionI[4];
-		return new Question(questionS, answers, nextQs1, feedback, point);
+		boolean[] isFinal = {false, false, false, false};
+		return new Question(questionS, answers, nextQs1, feedback, point, isFinal);
 	}
 	private QuestionI makeQuestion18(){
 		String questionS = "What if I got an STI?";
-		String[] answers = {"A. Let's go to SHS to get a low-cost STI test.", "B. STI? I used spermicide. There's no way of getting STI's with spermicide.", "C. I don't think so...", "D. No way, I have no symptoms of any disease."};
-		String feed1 = "Good job! A STI test at the SHS is the best way to help prevent the spread of STI's and to help cure STI's.";
-		String feed2 = "That is false! Spermicide only helps with preventing pregnancy, not with preventing STI's. Condoms are the only method of contraception that help prevent STIs too. You should probably get an STI test.";
+		String[] answers = {"A. Let's go to SHS to get a low-cost STI test.", "B. STI? I used spermicide. There's no way of getting STIs with spermicide.", "C. I don't think so...", "D. No way, I have no symptoms of any disease."};
+		String feed1 = "Good job! A STI test at the SHS is the best way to help prevent the spread of STIs and to help cure STIs.";
+		String feed2 = "That is false! Spermicide only helps with preventing pregnancy, not with preventing STIs. Condoms are the only method of contraception that help prevent STIs too. You should probably get an STI test.";
 		String feed3 = "That is very irresponsible! Go get a test!";
-		String feed4 = "That is a poor choice! Most people who have STI's show no symptoms.";
+		String feed4 = "That is a poor choice! Most people who have STIs show no symptoms.";
 		String[] feedback = {feed1, feed2, feed3, feed4};
 		int[][] point = {{20, 0, 0}, {-10, 0, 0}, {-10, 0, 0}, {-10, 0, 0}};
 		QuestionI[] nextQs1 = new QuestionI[4];
-		return new Question(questionS, answers, nextQs1, feedback, point);
+		boolean[] isFinal = {false, false, false, false};
+		return new Question(questionS, answers, nextQs1, feedback, point, isFinal);
 	}
 	private QuestionI makeQuestion19(){
 		String questionS = "Which of the following is an STI?";
@@ -437,9 +463,11 @@ public class FullscreenActivity extends Activity {
 			s4 = "Syphilis";
 		}
 		String[] answers = {s1, s2, s3, s4};
-		String feed1 = "Good job! All of these choices are STI's!";
+		String feed1 = "Good job! All of these choices are STIs!";
 		String[] feedback = {feed1, feed1, feed1, feed1};
 		int[][] point = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
-		return new Question(questionS, answers, feedback, point, true);
+		QuestionI[] nextq = {null, null, null, null};
+		boolean[] isFinal = {true, true, true, true};
+		return new Question(questionS, answers, nextq, feedback, point, isFinal);
 	}
 }

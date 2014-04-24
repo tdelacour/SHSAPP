@@ -7,5 +7,5 @@ public interface QuestionI {
 	public QuestionI[] getNextQuestions();
 	public String getFeedback(int i);
 	public int[] getPoints(int i);
-	public boolean getFinal();
+	public boolean[] getFinal();
 }
