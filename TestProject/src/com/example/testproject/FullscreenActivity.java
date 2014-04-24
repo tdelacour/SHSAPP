@@ -24,13 +24,13 @@ public class FullscreenActivity extends Activity {
 		makeTree(); // build story tree
 		setContentView(R.layout.activity_fullscreen); //XML layout 
 		health = (HealthView) findViewById(R.id.healthView);
-		
+
 		Display display = getWindowManager().getDefaultDisplay();
 		Point size = new Point();
 		display.getSize(size);
 		health.setDimension(size);
 		dimension = size;
-		
+
 		setViews(); //Initialize question and answer fields
 	}
 
@@ -43,13 +43,15 @@ public class FullscreenActivity extends Activity {
 	public void onAnswer1(View view){
 		// Update question object and XML
 		String feedback = curQuestion.getFeedback(1);
-		
+
 		// Update score
 		health.updateAll(curQuestion.getPoints(1));
-		
+
 		// Open the Feedback pop-up or end screen
 		if (curQuestion.getFinal()){
-			Intent intent = new Intent(FullscreenActivity.this, EndScreenActivity.class);
+			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
+			intent.putExtra("isFinal", curQuestion.getFinal());
+			intent.putExtra("feedback", feedback);
 			FullscreenActivity.this.startActivity(intent);
 			finish();
 		}
@@ -58,12 +60,6 @@ public class FullscreenActivity extends Activity {
 			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
 			intent.putExtra("feedback", feedback);
 			FullscreenActivity.this.startActivityForResult(intent, 1);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			setViews();
 		}
 	}
@@ -72,7 +68,9 @@ public class FullscreenActivity extends Activity {
 		String feedback = curQuestion.getFeedback(2);
 		health.updateAll(curQuestion.getPoints(2));
 		if (curQuestion.getFinal()){
-			Intent intent = new Intent(FullscreenActivity.this, EndScreenActivity.class);
+			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
+			intent.putExtra("isFinal", curQuestion.getFinal());
+			intent.putExtra("feedback", feedback);
 			FullscreenActivity.this.startActivity(intent);
 			finish();
 		}
@@ -81,12 +79,6 @@ public class FullscreenActivity extends Activity {
 			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
 			intent.putExtra("feedback", feedback);
 			FullscreenActivity.this.startActivityForResult(intent, 1);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			setViews();
 		}
 	}
@@ -95,7 +87,9 @@ public class FullscreenActivity extends Activity {
 		String feedback = curQuestion.getFeedback(3);
 		health.updateAll(curQuestion.getPoints(3));
 		if (curQuestion.getFinal()){
-			Intent intent = new Intent(FullscreenActivity.this, EndScreenActivity.class);
+			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
+			intent.putExtra("isFinal", curQuestion.getFinal());
+			intent.putExtra("feedback", feedback);
 			FullscreenActivity.this.startActivity(intent);
 			finish();
 		}
@@ -104,12 +98,6 @@ public class FullscreenActivity extends Activity {
 			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
 			intent.putExtra("feedback", feedback);
 			FullscreenActivity.this.startActivityForResult(intent, 1);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			setViews();
 		}
 	}
@@ -118,7 +106,9 @@ public class FullscreenActivity extends Activity {
 		String feedback = curQuestion.getFeedback(4);
 		health.updateAll(curQuestion.getPoints(4));
 		if (curQuestion.getFinal()){
-			Intent intent = new Intent(FullscreenActivity.this, EndScreenActivity.class);
+			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
+			intent.putExtra("isFinal", curQuestion.getFinal());
+			intent.putExtra("feedback", feedback);
 			FullscreenActivity.this.startActivity(intent);
 			finish();
 		}
@@ -127,12 +117,6 @@ public class FullscreenActivity extends Activity {
 			Intent intent = new Intent(FullscreenActivity.this, FeedbackActivity.class);
 			intent.putExtra("feedback", feedback);
 			FullscreenActivity.this.startActivityForResult(intent, 1);
-			try {
-				Thread.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			setViews();
 		}
 	}
@@ -143,86 +127,89 @@ public class FullscreenActivity extends Activity {
 		TextView question = (TextView) findViewById(R.id.fullscreen_content);
 		String nextq = curQuestion.getQuestion();
 		int len = nextq.length();
-		
+
 		//Calculate text size
 		if (dimension.x > 2400 && dimension.y > 1450){
 			if (len > 140){
-				question.setTextSize(100);
+				question.setTextSize(107);
 			}
 			else if (len > 120){
-				question.setTextSize(112);
-			}
-			else if (len > 100){
 				question.setTextSize(120);
 			}
+			else if (len > 100){
+				question.setTextSize(134);
+			}
 			else if (len > 80){
-				question.setTextSize(132);
+				question.setTextSize(150);
 			}
 			else if (len > 60){
-				question.setTextSize(140);
+				question.setTextSize(168);
 			}
 			else {
-				question.setTextSize(152);
+				question.setTextSize(190);
 			}	
 		}
 		else if (dimension.x > 1050 && dimension.y > 1800){
 			if (len > 140){
-				question.setTextSize(50);
+				question.setTextSize(57);
 			}
 			else if (len > 120){
-				question.setTextSize(56);
+				question.setTextSize(61);
 			}
 			else if (len > 100){
-				question.setTextSize(60);
-			}
-			else if (len > 80){
 				question.setTextSize(66);
 			}
+			else if (len > 80){
+				question.setTextSize(72);
+			}
 			else if (len > 60){
-				question.setTextSize(70);
+				question.setTextSize(79);
 			}
 			else {
-				question.setTextSize(76);
+				question.setTextSize(88);
 			}		
 		}
 		else if (dimension.x > 700 && dimension.y > 1150){
-			if (len > 140){
+			if (len > 160){
 				question.setTextSize(25);
 			}
+			else if (len > 140){
+				question.setTextSize(27);
+			}
 			else if (len > 120){
-				question.setTextSize(28);
+				question.setTextSize(29);
 			}
 			else if (len > 100){
-				question.setTextSize(30);
+				question.setTextSize(32);
 			}
 			else if (len > 80){
-				question.setTextSize(33);
-			}
-			else if (len > 60){
 				question.setTextSize(35);
 			}
+			else if (len > 60){
+				question.setTextSize(39);
+			}
 			else {
-				question.setTextSize(38);
+				question.setTextSize(44);
 			}	
 		}
 		else if (dimension.x > 450 && dimension.y > 750){
 			if (len > 140){
-				question.setTextSize(12);
-			}
-			else if (len > 120){
-				question.setTextSize(13);
-			}
-			else if (len > 100){
 				question.setTextSize(14);
 			}
-			else if (len > 80){
+			else if (len > 120){
+				question.setTextSize(15);
+			}
+			else if (len > 100){
 				question.setTextSize(16);
 			}
+			else if (len > 80){
+				question.setTextSize(18);
+			}
 			else if (len > 60){
-				question.setTextSize(17);
+				question.setTextSize(20);
 			}
 			else {
-				question.setTextSize(18);
+				question.setTextSize(22);
 			}		
 		}
 		else {
@@ -245,7 +232,7 @@ public class FullscreenActivity extends Activity {
 				question.setTextSize(10);
 			}		
 		}
-		
+
 		//question
 		question.setText(curQuestion.getQuestion());
 
@@ -261,8 +248,8 @@ public class FullscreenActivity extends Activity {
 		mButton.setText(strArr[3]);
 	}
 
-private void makeTree(){
-		
+	private void makeTree(){
+
 		QuestionI question1 = makeQuestion1();
 		QuestionI question2 = makeQuestion2();
 		QuestionI question3 = makeQuestion3();
@@ -273,69 +260,69 @@ private void makeTree(){
 		QuestionI question16 = makeQuestion16();
 		QuestionI question18 = makeQuestion18();
 		QuestionI question19 = makeQuestion19();
-		
+
 		//Connect everything
 		question1.getNextQuestions()[0] = question2;
 		question1.getNextQuestions()[1] = question2;
 		question1.getNextQuestions()[2] = question3;
 		question1.getNextQuestions()[3] = question3;
-		
+
 		question2.getNextQuestions()[0] = question3;
 		question2.getNextQuestions()[1] = question3;
 		question2.getNextQuestions()[2] = question3;
 		question2.getNextQuestions()[3] = question3;
-		
+
 		question3.getNextQuestions()[0] = question6;
 		question3.getNextQuestions()[1] = question6;
 		question3.getNextQuestions()[2] = question6;
 		question3.getNextQuestions()[3] = question6;
-		
+
 		question6.getNextQuestions()[0] = question4;
 		question6.getNextQuestions()[1] = question4;
 		question6.getNextQuestions()[2] = question4;
 		question6.getNextQuestions()[3] = question4;
-		
+
 		question4.getNextQuestions()[0] = question15;
 		question4.getNextQuestions()[1] = question15;
 		question4.getNextQuestions()[2] = question5;
 		question4.getNextQuestions()[3] = question15;//update
-		
+
 		question5.getNextQuestions()[0] = question1;
 		question5.getNextQuestions()[1] = question1;
 		question5.getNextQuestions()[2] = question15;//update
 		question5.getNextQuestions()[3] = question1;
-		
+
 		question15.getNextQuestions()[0] = question16;
 		question15.getNextQuestions()[1] = question16;
 		question15.getNextQuestions()[2] = question15;
 		question15.getNextQuestions()[3] = question15;
-		
+
 		question16.getNextQuestions()[0] = question18;
 		question16.getNextQuestions()[1] = question18;
 		question16.getNextQuestions()[2] = question18;
 		question16.getNextQuestions()[3] = question18;
-		
+
 		question18.getNextQuestions()[0] = question19;
 		question18.getNextQuestions()[1] = question19;
 		question18.getNextQuestions()[2] = question19;
 		question18.getNextQuestions()[3] = question19;
 		curQuestion = question1;
 	}
-	
+
 	private QuestionI makeQuestion1(){
 		String questionS = "You are going out tonight. What do you want to bring?";
 		String[] answers = {"A. Condoms", "B. A friend", "C. Extra pants", "D. Your cool new flask"};
-		String feed1 = "Great! Here are some other forms birth control:\n Male condom\n Female condom\n Pill\n PatchShot\n Diaphragm\n NuvaRing	\nSpermicide \nCervical cap\n IUD\n Vasectomy\n Female sterilization\n  Contraceptive film\n Implant ";
-		String feed2 = "Maybe you should have went with some birth control... here is a list for you:\n Male condom\n Female condom\n Pill\n PatchShot\n Diaphragm\n NuvaRing	\nSpermicide \nCervical cap\n IUD\n Vasectomy\n Female sterilization\n  Contraceptive film\n Implant";
+		String feed1 = "Great! Here are some other forms birth control:\n -Male condom\n -Female condom\n -The pill\n -Contraceptive patch\n -Birth control shot\n -Diaphragm\n -NuvaRing \n -Spermicide \n -Cervical cap\n -Intrauterine Device (IUD)\n -Vasectomy\n -Female sterilization\n  -Contraceptive film or implant ";
+		String feed2 = "Maybe you should have went with some birth control... here's a list of possible contraceptives:\n -Male condom\n -Female condom\n -The pill\n -Coontraceptive patch\n -Birth control shot\n -Diaphragm\n -NuvaRing \n -Spermicide \nCervical cap\n -Intrauterine Device (IUD)\n -Vasectomy\n -Female sterilization\n  -Contraceptive film or implant";
 		String[] feedback = {feed1, feed1, feed2, feed2};
 		int[][] point = {{10, 0, 10}, {-5, 10, -5}, {-10, -5, -10}, {-10, -10, -10}};
 		QuestionI[] nextQs = new QuestionI[4];
 		return new Question(questionS, answers, nextQs, feedback, point);
 	}
 	private QuestionI makeQuestion2(){
-		String questionS = "Oh no! You’re broke... but you still want to be safe. Where can you get free condoms?";
-		String[] answers = {"A. SHS", "B. 7 Eleven", "C. CHOP", "D. Your friend’s room"};
-		String feed1 = "Good job! SHS offers free condoms for all Penn students";
+		String questionS = "Oh no! You're broke... but you still want to be safe. Where can you get free condoms?";
+		String[] answers = {"A. SHS", "B. CVS", "C. CHOP", "D. Your friend's room"};
+		String feed1 = "Good job! SHS offers 6 free condoms per visit for all Penn students";
 		String feed2 = "You can buy them here.. but they are not free! Go to SHS for free condoms.";
 		String feed3 = "Can't buy them here... goto SHS for free condoms";
 		String feed4 = "You probably shouldn't steal your friend's condoms... get free condoms at SHS!";
@@ -344,23 +331,23 @@ private void makeTree(){
 		QuestionI[] nextQs1 = new QuestionI[4];
 		return new Question(questionS, answers, nextQs1, feedback, point);
 	}
-	
+
 	private QuestionI makeQuestion3(){
-		String questionS = "You go to the party. What do you want to watch out for?";
+		String questionS = "You head out to the party. What do you want to watch out for?";
 		String[] answers = {"A. Accepting drinks from strangers", "B. All the hotties", "C. That random person trying to make out with you", "D. Getting an embarrassing picture taken of you."};
 		String feed1 = "Yes, that is very important!";
-		String feed2 = "Maybe this is not as important as accepting drinks from strangers or avoiding creepers...";
+		String feed2 = "Maybe this is not as important as watching out for drugged-laced drinks or avoiding creepers...";
 		String[] feedback = {feed1, feed2, feed1, feed2};
 		int[][] point = {{5, 5, 5}, {0, 10, 0}, {-5, -5, -5}, {-5, -5, -5}};
 		QuestionI[] nextQs1 = new QuestionI[4];
 		return new Question(questionS, answers, nextQs1, feedback, point);
 	}
 	private QuestionI makeQuestion4(){
-		String questionS = "You are getting really drunk. What should you do now?";
-		String[] answers = {"A. Switch to beer. You can’t get drunk off beer.", "B. MORE SHOTS!!!", "C. Drink some water", "D. Ooooh, dannnggg who that over there?"};
-		String feed1 = "umm... no you can definitely get drunk off beer. Water would be better.";
+		String questionS = "You are getting REALLY drunk. What should you do now?";
+		String[] answers = {"A. Switch to beer. You can't get drunk off beer.", "B. MORE SHOTS!!!", "C. Drink some water", "D. Ooooh, dannnggg who that over there?"};
+		String feed1 = "umm... no you can definitely get drunk off beer. Although it is a common misconception that you can’t become drunk purely off of beer, one twelve ounce can has the same alcohol content of a shot of vodka or a glass of wine. Water would probably be a better choice.";
 		String feed2 = "You're going to feel it tomorrow...";
-		String feed3 = "That is a great choice! Water will help rehydrate you and you will not get any more drunk.";
+		String feed3 = "That is a great choice! Water will help rehydrate you and will dilute any alcohol left in your stomach. You might not feel better immediately, but this'll help both your liver and your hangover.";
 		String feed4 = "You go over and work your magic...";
 		String[] feedback = {feed1, feed2, feed3, feed4};
 		int[][] point = {{-25, -25, -25}, {-25, -25, -25}, {0, 0, 0}, {0, 0, 0}};
@@ -368,8 +355,8 @@ private void makeTree(){
 		return new Question(questionS, answers, nextQs1, feedback, point);
 	}
 	private QuestionI makeQuestion5(){
-		String questionS = "As you’re enjoying a nice, cold glass of water, some person comes up to you and starts talking… and they’re soooo hawt!";
-		String[] answers = {"A. Drop the pants right meow", "B. I’m too drunk to even talk to people right now. I should go home", "C. Lesgo go home", "D. Attractive people are scary. Play dead and maybe they’ll leave you alone."};
+		String questionS = "As you're enjoying a nice, cold glass of water, some person comes up to you and starts talking and they're soooo hawt! What do you do!?!";
+		String[] answers = {"A. Drop the pants right meow", "B. I'm too drunk to even talk to people right now. I should go home", "C. Lesgo go home", "D. Attractive people are scary. Play dead and maybe they'll leave you alone."};
 		String feed1 = "For some reason that didn't work...I guess you're going hom alone tonight. Let's play again!";
 		String feed2 = "I guess you are done for the night...Let's play again!";
 		String feed3 = "Here we go...";
@@ -381,17 +368,17 @@ private void makeTree(){
 	private QuestionI makeQuestion6(){
 		String questionS = "Someone comes up to you and hands you a strange purple drank.";
 		String[] answers = {"A. Sip it... DRANK... faded... DRANK", "B. chug it!", "C. Pretend to drink it.", "D. Refuse to drink it."};
-		String feed1 = "GLUGLUGLUGLUG...Let's hope there were no roofies in there!";
-		String feed2 = "Good job! There might have been some roofies in there.";
+		String feed1 = "You'd better hope there were no roofies in there! The drug Rohypnol can cause anything from amnesia and extreme sedation to seizures, respiratory failure and death. Be careful!";
+		String feed2 = "Good job! There might have been some roofies in there. The drug Rohypnol can cause anything from amnesia and extreme sedation to seizures, respiratory failure and death. Congrats on not getting roofied!!!";
 		String[] feedback = {feed1, feed1, feed2, feed2};
 		int[][] point = {{-10, -20, 10}, {-10, -20, -10}, {5, 5, 5}, {5, 5, 5}};
 		QuestionI[] nextQs1 = new QuestionI[4];
 		return new Question(questionS, answers, nextQs1, feedback, point);
 	}
 	private QuestionI makeQuestion15(){
-		String questionS = "You wake up having no idea where you with a random naked person next to you. Oh no! You think you might not have used a condom";
+		String questionS = "You wake up having no idea where you are and with a random naked person next to you. Oh no! You think you might not have used a condom";
 		String[] answers = {"A. Who cares! If I leave now, I can still make it to brunch at hill.", "B. We should probably get some emergency contraception", "C. Ugh, maybe if I just go back to sleep, this whole situation will resolve itself.", "D. Why is there a whole in my pants?"};
-		String feed1 = "There is a huge risk of an STD or pregnancy! You should probably get that checked out.";
+		String feed1 = "You shoudl care! There is a huge risk of an STD or pregnancy! You should probably get that checked out.";
 		String feed2 = "That's a great choice! Let's get some...";
 		String feed3 = "After you wake up the situation does not change...";
 		String feed4 = "Focus on the situation!";
@@ -402,22 +389,10 @@ private void makeTree(){
 	}
 	private QuestionI makeQuestion16(){
 		String questionS = "Where can we get some emergency contraception?";
-		String[] answers = {"A. SHS", "B. Drugstores", "C. Planned Parenthood", "D. All of the above"};
-		String feed1 = "Good job! You can get emergency concraception at any of the answers";
+		String[] answers = {"A. SHS", "B. CVS", "C. Planned Parenthood", "D. All of the above"};
+		String feed1 = "Good job! You can get emergency concraception at any of the answers. ";
 		String[] feedback = {feed1, feed1, feed1, feed1};
 		int[][] point = {{0, 0, 10}, {0, 0, 10}, {0, 0, 10}, {0, 0, 20}};
-		QuestionI[] nextQs1 = new QuestionI[4];
-		return new Question(questionS, answers, nextQs1, feedback, point);
-	}
-	private QuestionI makeQuestion17(){
-		String questionS = "Oh no! You’re broke... but you still want to be safe. Where can you get free condoms?";
-		String[] answers = {"A. SHS", "B. 7 Eleven", "C. CHOP", "D. Your friend’s room"};
-		String feed1 = "Good job! SHS offers free condoms for all Penn students";
-		String feed2 = "You can buy them here.. but they are not free! Go to SHS for free comdoms.";
-		String feed3 = "Can't buy them here... goto SHS for free condoms";
-		String feed4 = "You probably shouldn't steal your friend's condoms... get free condoms at SHS!";
-		String[] feedback = {feed1, feed2, feed3, feed4};
-		int[][] point = {{10, 0, 10}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
 		QuestionI[] nextQs1 = new QuestionI[4];
 		return new Question(questionS, answers, nextQs1, feedback, point);
 	}
@@ -425,7 +400,7 @@ private void makeTree(){
 		String questionS = "What if I got an STI?";
 		String[] answers = {"A. Let's go to SHS to get a low-cost STI test.", "B. STI? I used spermicide. There's no way of getting STI's with spermicide.", "C. I don't think so...", "D. No way, I have no symptoms of any disease."};
 		String feed1 = "Good job! A STI test at the SHS is the best way to help prevent the spread of STI's and to help cure STI's.";
-		String feed2 = "That is false! Spermicide only helps with preventing pregnancy, not with preventing STI's. You should probably get an STI test.";
+		String feed2 = "That is false! Spermicide only helps with preventing pregnancy, not with preventing STI's. Condoms are the only method of contraception that help prevent STIs too. You should probably get an STI test.";
 		String feed3 = "That is very irresponsible! Go get a test!";
 		String feed4 = "That is a poor choice! Most people who have STI's show no symptoms.";
 		String[] feedback = {feed1, feed2, feed3, feed4};
@@ -462,10 +437,9 @@ private void makeTree(){
 			s4 = "Syphilis";
 		}
 		String[] answers = {s1, s2, s3, s4};
-		//String feed1 = "Good job! All of these choices are STI's!";
-		//String[] feedback = {feed1, feed1, feed1, feed1};
-		//int[][] point = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
-		//QuestionI[] nextQs1 = new QuestionI[4];
-		return new Question(questionS, answers, true);
+		String feed1 = "Good job! All of these choices are STI's!";
+		String[] feedback = {feed1, feed1, feed1, feed1};
+		int[][] point = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+		return new Question(questionS, answers, feedback, point, true);
 	}
 }

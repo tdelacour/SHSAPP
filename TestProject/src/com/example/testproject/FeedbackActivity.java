@@ -10,6 +10,8 @@ import android.content.Intent;
 
 // This Activity is the feedback popup between each question
 public class FeedbackActivity extends Activity {
+	
+	private boolean isFinal;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,7 @@ public class FeedbackActivity extends Activity {
 		
 		Intent intent = getIntent();
 		String feedback = intent.getStringExtra("feedback");
+		isFinal = intent.getBooleanExtra("isFinal", false);
 		TextView content = (TextView) findViewById(R.id.feedback_content);
 		content.setText(feedback);
 	}
@@ -33,9 +36,16 @@ public class FeedbackActivity extends Activity {
 	// When continue button is clicked
 	public void onContinue(View view){ 
 		//Weird code that returns to previous activity
-		Intent returnIntent = new Intent();
-		setResult(RESULT_CANCELED, returnIntent);        
-		finish();
+		if (isFinal){
+			Intent intent = new Intent(FeedbackActivity.this, EndScreenActivity.class);
+			FeedbackActivity.this.startActivity(intent);
+			finish();
+		}
+		else{
+			Intent returnIntent = new Intent();
+			setResult(RESULT_CANCELED, returnIntent);        
+			finish();
+		}
 	}
 
 }

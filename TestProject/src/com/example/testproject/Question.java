@@ -45,15 +45,13 @@ public class Question implements QuestionI {
 			this.feedback[i] = feedback[i];
 			this.points[i][0] = points[i][0];
 			this.points[i][1] = points[i][1];
-			this.points[i][2] = points[i][2];
 		}
 	}
 
-	public Question (String q, String[] answers, boolean isFinal){
+	public Question (String q, String[] answers, String[] feedback, int[][]points, boolean isFinal){
 		this.question = q;
 		this.isFinal = isFinal;
 
-		String defaultfeed = "Well Hello!";
 		this.answers = new String[answers.length];
 		this.nextQs = new QuestionI[answers.length];
 		this.feedback = new String[4];
@@ -61,10 +59,9 @@ public class Question implements QuestionI {
 		for (int i = 0; i < answers.length; i++){ 
 			this.answers[i] = answers[i];
 			this.nextQs[i] = this;
-			feedback[i] = defaultfeed;
-			points[i][0] = 0;
-			points[i][1] = 0;
-			points[i][2] = 0;
+			this.feedback[i] = feedback[i];
+			this.points[i][0] = points[i][0];
+			this.points[i][1] = points[i][1];
 		}
 	}
 

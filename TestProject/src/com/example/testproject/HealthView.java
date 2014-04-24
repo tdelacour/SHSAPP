@@ -38,9 +38,9 @@ public class HealthView extends View {
 		int red; int green; 
 		int left = getPaddingLeft(); //offset from edge
 		int top = getPaddingTop(); //offset from edge
-		int height = screenHeight/40; //height of health fill
+		int height = screenHeight/30; //height of health fill
 		int spacer = screenHeight/50; //height of space btwn bars
-		int width = screenWidth/4; //width of health fill max
+		int width = screenWidth/3; //width of health fill max
 		int widthAlc = width*alcohol/100; //width of health fill Alcohol
 		int widthSex = width*sexual/100; //width of health fill sexual
 		int ovalSize = width/5; //width of oval which creates cap ends
@@ -113,15 +113,19 @@ public class HealthView extends View {
 	
 	public void updateAlcohol(int x){
 		alcohol += x;
+		if (alcohol < 0) alcohol = 0;
+		if (alcohol > 100) alcohol = 100;
 	}
 	
 	public void updateSexual(int x){
 		sexual += x;
+		if (sexual < 0) sexual = 0;
+		if (sexual > 100) sexual = 100;
 	}
 	
 	public void updateAll(int[] x){
-		alcohol += x[0];
-		sexual += x[1];
+		updateAlcohol(x[0]);
+		updateSexual(x[1]);
 	}
 	
 	public void setDimension(Point dim){
@@ -133,8 +137,8 @@ public class HealthView extends View {
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
-	    int desiredWidth = getPaddingLeft() + 12*screenWidth/40;
-	    int desiredHeight = screenHeight/9;
+	    int desiredWidth = getPaddingLeft() + 2*screenWidth/5;
+	    int desiredHeight = screenHeight/7;
 
 	    int widthMode = MeasureSpec.getMode(widthMeasureSpec);
 	    int widthSize = MeasureSpec.getSize(widthMeasureSpec);
