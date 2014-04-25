@@ -17,7 +17,7 @@ public class IntroActivity extends Activity {
 		setContentView(R.layout.activity_intro);
 		
 		TextView content = (TextView) findViewById(R.id.intro_content);
-		content.setText("This is where our intro literature will go");
+		content.setText("Welcome to the SHS Sexual Health App!");
 	}
 
 	@Override

@@ -20,7 +20,7 @@ public class Question implements QuestionI {
 		this.feedback = new String[4];
 		this.nextQs = new Question[4];
 		this.answers = new String[4];
-		this.points = new int[4][3];
+		this.points = new int[4][4];
 		this.pic = "sticksolo";
 		for (int i = 0; i < 4; i++){ 
 			answers[i] = defaultAns;
@@ -29,6 +29,7 @@ public class Question implements QuestionI {
 			points[i][0] = 0;
 			points[i][1] = 0;
 			points[i][2] = 0;
+			points[i][3] = 0;
 		}
 	}
 
@@ -41,7 +42,7 @@ public class Question implements QuestionI {
 		this.answers = new String[arrLen];
 		this.nextQs = new QuestionI[arrLen];
 		this.feedback = new String[arrLen];
-		this.points = new int[arrLen][2];
+		this.points = new int[arrLen][4];
 		this.isFinal = new boolean[arrLen];
 		this.pic = pic;
 		
@@ -52,6 +53,8 @@ public class Question implements QuestionI {
 			this.feedback[i] = feedback[i];
 			this.points[i][0] = points[i][0];
 			this.points[i][1] = points[i][1];
+			this.points[i][2] = points[i][2];
+			this.points[i][3] = points[i][3];
 		}
 	}
 

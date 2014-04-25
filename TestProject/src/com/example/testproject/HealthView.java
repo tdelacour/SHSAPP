@@ -131,7 +131,7 @@ public class HealthView extends View {
 	
 	public void updateAll(int[] x){
 		updateAlcohol(x[0]);
-		updateSexual(x[1]);
+		updateSexual(x[1] + x[2] + x[3]);
 	}
 	
 	public void setDimension(Point dim){

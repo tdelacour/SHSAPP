@@ -61,19 +61,23 @@ public class FeedbackActivity extends Activity {
 		if (alcohol < 0){
 			contentPts.setTextColor(Color.rgb(175, 0, 0));
 		}
-		else {
+		else if (alcohol > 0){
 			text += "+";
 			contentPts.setTextColor(Color.rgb(0, 125, 0));
 		}
-		text += Integer.toString(alcohol) + " points Alcohol Safety!\n";
+		if (alcohol != 0){
+			text += Integer.toString(alcohol) + " points Alcohol Safety!\n";
+		}
 		if (sexual < 0){
 			contentPts.setTextColor(Color.rgb(175, 0, 0));
 		}
-		else {
+		else if (sexual > 0){
 			text += "+";
 			contentPts.setTextColor(Color.rgb(0, 125, 0));
 		}
-		text += Integer.toString(sexual) + " points Sexual Health!\n";
+		if(sexual != 0){
+			text += Integer.toString(sexual) + " points Sexual Health!\n";
+		}
 		
 		contentPts.setText(text);
 		
@@ -90,19 +94,19 @@ public class FeedbackActivity extends Activity {
 		//Only 700 x 1150 is actually calibrated
 		if (size.x > 2400 && size.y > 1450){
 			if (len > 140){
-				content.setTextSize(107);
+				content.setTextSize(100);
 			}
 			else if (len > 120){
-				content.setTextSize(120);
+				content.setTextSize(110);
 			}
 			else if (len > 100){
-				content.setTextSize(134);
+				content.setTextSize(125);
 			}
 			else if (len > 80){
-				content.setTextSize(150);
+				content.setTextSize(140);
 			}
 			else if (len > 60){
-				content.setTextSize(168);
+				content.setTextSize(160);
 			}
 			else {
 				content.setTextSize(190);
@@ -130,16 +134,16 @@ public class FeedbackActivity extends Activity {
 		}
 		else if (size.x > 700 && size.y > 1150){
 			if (len > 250){
-				content.setTextSize(20);
+				content.setTextSize(22);
 			}
 			else if (len > 200){
-				content.setTextSize(25);
+				content.setTextSize(24);
 			}
 			else if (len > 150){
-				content.setTextSize(30);
+				content.setTextSize(28);
 			}
 			else {
-				content.setTextSize(35);
+				content.setTextSize(33);
 			}
 		}
 		else if (size.x > 450 && size.y > 750){
