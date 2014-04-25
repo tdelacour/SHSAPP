@@ -34,13 +34,13 @@
             android:paddingTop="15dp" />
 
         <ImageView
+            android:id="@+id/stickImage"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right|bottom"
             android:gravity="right|bottom"
-            android:layout_marginLeft="100dip"
             android:contentDescription="@string/stick_image"
-            android:src="@drawable/sticksolo" />
+            android:src="@drawable/ic_launcher" />
     </LinearLayout>
 
     <LinearLayout

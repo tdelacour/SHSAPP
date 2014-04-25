@@ -73,9 +73,8 @@ public class HealthView extends View {
 		
 		//Universal
 		paint.setStyle(Paint.Style.FILL);
-		paint.setTextSize(20);
+		paint.setTextSize(25);
 		paint.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
-		paint.setTypeface(Typeface.DEFAULT_BOLD);
 		
 		//Color for alcohol
 		red = (int)((100 - alcohol) * 1.75);
@@ -89,7 +88,7 @@ public class HealthView extends View {
 		
 		//label
 		paint.setColor(Color.BLACK);
-		c.drawText("Alcohol Safety", fillLeft, alcFillTop, paint);
+		c.drawText("Alcohol Safety", fillLeft + height, alcFillBot - 3*borderVer, paint);
 		
 		//Shell
 		paint.setColor(Color.DKGRAY); //**Color Tag***
@@ -107,6 +106,8 @@ public class HealthView extends View {
 		c.drawRect(fillLeft, sexFillTop, sexFillRight, sexFillBot, paint);
 		paint.setColor(Color.rgb(51, 181, 229)); //***Color Tag***
 		c.drawRect(sexFillRight, sexFillTop, sexEmptyRight, sexFillBot, paint);
+		paint.setColor(Color.BLACK);
+		c.drawText("Sexual Health", fillLeft + height, sexFillBot - 3*borderVer, paint);
 		paint.setColor(Color.DKGRAY); //***Color Tag***
 		oval = new RectF(left, sexFillTop, oval1Right, oval3Bot);
 		c.drawArc(oval, 90, 180, true, paint);

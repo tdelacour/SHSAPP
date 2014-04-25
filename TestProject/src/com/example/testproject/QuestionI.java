@@ -8,4 +8,5 @@ public interface QuestionI {
 	public String getFeedback(int i);
 	public int[] getPoints(int i);
 	public boolean[] getFinal();
+	public String getPic();
 }

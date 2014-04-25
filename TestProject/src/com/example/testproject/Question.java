@@ -8,6 +8,7 @@ public class Question implements QuestionI {
 	private String[] feedback;
 	private int[][] points;
 	private boolean[] isFinal;
+	private String pic;
 
 	public Question (){
 		// Initialize question string
@@ -20,6 +21,7 @@ public class Question implements QuestionI {
 		this.nextQs = new Question[4];
 		this.answers = new String[4];
 		this.points = new int[4][3];
+		this.pic = "sticksolo";
 		for (int i = 0; i < 4; i++){ 
 			answers[i] = defaultAns;
 			nextQs[i] = this;
@@ -30,7 +32,8 @@ public class Question implements QuestionI {
 		}
 	}
 
-	public Question (String q, String[] answers, QuestionI[] nextQs, String[] feedback, int[][] points, boolean[] isFinal){
+	public Question (String q, String[] answers, QuestionI[] nextQs, 
+			String[] feedback, int[][] points, boolean[] isFinal, String pic){
 		this.question = q;
 
 		int arrLen = Math.min(Math.min(answers.length, nextQs.length), feedback.length);
@@ -40,6 +43,7 @@ public class Question implements QuestionI {
 		this.feedback = new String[arrLen];
 		this.points = new int[arrLen][2];
 		this.isFinal = new boolean[arrLen];
+		this.pic = pic;
 		
 		for (int i = 0; i < arrLen; i++){ 
 			this.isFinal[i] = isFinal[i];
@@ -82,5 +86,8 @@ public class Question implements QuestionI {
 	public boolean[] getFinal(){
 		return isFinal;
 	}
-
+	
+	public String getPic(){
+		return pic;
+	}
 }
