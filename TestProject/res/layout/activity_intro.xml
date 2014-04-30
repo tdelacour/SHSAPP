@@ -2,37 +2,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="@drawable/introbg"
     android:orientation="vertical" >
-    
+
     <TextView
         android:id="@+id/intro_content"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="top"
+        android:paddingTop="50dp"
         android:text="@string/feedbackPop"
         android:textColor="#33b5e5"
         android:textSize="50sp"
-        android:textStyle="bold" 
-        android:padding="20dp"/>
-    
-      <LinearLayout
-            android:id="@+id/introScreen_controls"
-            style="?buttonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            android:orientation="vertical">
+        android:layout_weight="1"
+        android:textStyle="bold" />
 
-        	<Button
-            	android:id="@+id/play"
-  	 	    	style="?buttonBarButtonStyle"
-      	    	android:layout_width="fill_parent"
-      	    	android:layout_height="wrap_content"
-      	    	android:text="@string/Continue"
-       	    	android:onClick="onPlay"/>
-            
+    <LinearLayout
+        android:id="@+id/introScreen_controls"
+        style="?buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@color/black_overlay"
+        android:gravity="bottom"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/play"
+            style="?buttonBarButtonStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:onClick="onPlay"
+            android:text="@string/Continue" />
     </LinearLayout>
-    
+
 </LinearLayout>
