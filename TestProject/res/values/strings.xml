@@ -21,5 +21,6 @@
     <string name="play">Play!</string>
     <string name="intro">This is the intro screen</string>
     <string name="stick_image">stick figure</string>
+    <string name="link"><a href="http://www.vpul.upenn.edu/shs/" >Additional Questions? Click here!</a></string>
 
 </resources>

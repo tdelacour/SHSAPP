@@ -53,7 +53,7 @@ public class FullscreenActivity extends Activity {
 		this.std += curQuestion.getPoints(1)[1];
 		this.prego += curQuestion.getPoints(1)[2];
 		this.rape += curQuestion.getPoints(1)[3];
-		
+
 		int[] sexual = curQuestion.getPoints(1);
 
 		// Open the Feedback pop-up or end screen
@@ -80,7 +80,7 @@ public class FullscreenActivity extends Activity {
 		String feedback = curQuestion.getFeedback(2);
 		health.updateAll(curQuestion.getPoints(2));
 		int[] sexual = curQuestion.getPoints(2);
-		
+
 		this.std += curQuestion.getPoints(2)[1];
 		this.prego += curQuestion.getPoints(2)[2];
 		this.rape += curQuestion.getPoints(2)[3];
@@ -107,7 +107,7 @@ public class FullscreenActivity extends Activity {
 		String feedback = curQuestion.getFeedback(3);
 		health.updateAll(curQuestion.getPoints(3));
 		int[] sexual = curQuestion.getPoints(3);
-		
+
 		this.std += curQuestion.getPoints(3)[1];
 		this.prego += curQuestion.getPoints(3)[2];
 		this.rape += curQuestion.getPoints(3)[3];
@@ -134,7 +134,7 @@ public class FullscreenActivity extends Activity {
 		String feedback = curQuestion.getFeedback(4);
 		health.updateAll(curQuestion.getPoints(4));
 		int[] sexual = curQuestion.getPoints(4);
-		
+
 		this.std += curQuestion.getPoints(4)[1];
 		this.prego += curQuestion.getPoints(4)[2];
 		this.rape += curQuestion.getPoints(4)[3];
@@ -144,6 +144,9 @@ public class FullscreenActivity extends Activity {
 			intent.putExtra("feedback", feedback);
 			intent.putExtra("alcohol", sexual[0]);
 			intent.putExtra("sexual", sexual[1] + sexual[2] + sexual[3]);
+			intent.putExtra("std", this.std);
+			intent.putExtra("prego", this.prego);
+			intent.putExtra("rape", this.rape);
 			FullscreenActivity.this.startActivity(intent);
 			finish();
 		}
@@ -292,128 +295,120 @@ public class FullscreenActivity extends Activity {
 		ImageView iv= (ImageView)findViewById(R.id.stickImage);
 		iv.setImageResource(getResources().getIdentifier(curQuestion.getPic(), 
 				"drawable", getPackageName()));
+		
+		//redraw healthbars
+		HealthView health = (HealthView)findViewById(R.id.healthView);
+		health.invalidate();
 	}
 
 	private void makeTree(){
 
 		QuestionI question1  = makeQuestion1();
-	    QuestionI question2  = makeQuestion2();
-	    QuestionI question3  = makeQuestion3();
-	    QuestionI question4  = makeQuestion4();
-	    QuestionI question5  = makeQuestion5();
-	    QuestionI question6  = makeQuestion6();
-	    QuestionI question7  = makeQuestion7();
-	    QuestionI question8  = makeQuestion8();
-	    QuestionI question9  = makeQuestion9();
-	    QuestionI question10 = makeQuestion10();
-	    QuestionI question11 = makeQuestion11();
-	    QuestionI question12 = makeQuestion12();
-	    QuestionI question13 = makeQuestion13();
-	    QuestionI question14 = makeQuestion14();
-	    QuestionI question15 = makeQuestion15();
-	    QuestionI question16 = makeQuestion16();
-	    QuestionI question17 = makeQuestion17();
-	    QuestionI question18 = makeQuestion18();
-	    QuestionI question19 = makeQuestion19();
-	    
-	    //Connect everything
-	    question1.getNextQuestions()[0] = question2;
-	    question1.getNextQuestions()[1] = question2;
-	    question1.getNextQuestions()[2] = question3;
-	    question1.getNextQuestions()[3] = question3;
-	    
-	    question2.getNextQuestions()[0] = question3;
-	    question2.getNextQuestions()[1] = question3;
-	    question2.getNextQuestions()[2] = question3;
-	    question2.getNextQuestions()[3] = question3;
-	    
-	    question3.getNextQuestions()[0] = question6;
-	    question3.getNextQuestions()[1] = question6;
-	    question3.getNextQuestions()[2] = question6;
-	    question3.getNextQuestions()[3] = question6;
-	    
-	    question6.getNextQuestions()[0] = question4;
-	    question6.getNextQuestions()[1] = question4;
-	    question6.getNextQuestions()[2] = question4;
-	    question6.getNextQuestions()[3] = question4;
-	    
-	    question4.getNextQuestions()[0] = question15;
-	    question4.getNextQuestions()[1] = question15;
-	    question4.getNextQuestions()[2] = question5;
-	    question4.getNextQuestions()[3] = question7;//update
-	    
-	    question5.getNextQuestions()[0] = question1;
-	    question5.getNextQuestions()[1] = question1;
-	    question5.getNextQuestions()[2] = question7;//update
-	    question5.getNextQuestions()[3] = question7;
+		QuestionI question2  = makeQuestion2();
+		QuestionI question3  = makeQuestion3();
+		QuestionI question4  = makeQuestion4();
+		QuestionI question5  = makeQuestion5();
+		QuestionI question6  = makeQuestion6();
+		QuestionI question7  = makeQuestion7();
+		QuestionI question8  = makeQuestion8();
+		QuestionI question9  = makeQuestion9();
+		QuestionI question10 = makeQuestion10();
+		QuestionI question13 = makeQuestion13();
+		QuestionI question14 = makeQuestion14();
+		QuestionI question15 = makeQuestion15();
+		QuestionI question16 = makeQuestion16();
+		QuestionI question17 = makeQuestion17();
+		QuestionI question18 = makeQuestion18();
+		QuestionI question19 = makeQuestion19();
 
-	    question7.getNextQuestions()[0] = question14;
-	    question7.getNextQuestions()[1] = question8;
-	    question7.getNextQuestions()[2] = question9;
-	    question7.getNextQuestions()[3] = question9;
+		//Connect everything
+		question1.getNextQuestions()[0] = question2;
+		question1.getNextQuestions()[1] = question2;
+		question1.getNextQuestions()[2] = question3;
+		question1.getNextQuestions()[3] = question3;
 
-	    question8.getNextQuestions()[0] = question10;
-	    question8.getNextQuestions()[1] = question9;
-	    question8.getNextQuestions()[2] = question10;
-	    question8.getNextQuestions()[3] = question10;
+		question2.getNextQuestions()[0] = question3;
+		question2.getNextQuestions()[1] = question3;
+		question2.getNextQuestions()[2] = question3;
+		question2.getNextQuestions()[3] = question3;
 
-	    question9.getNextQuestions()[0] = question10;
-	    question9.getNextQuestions()[1] = question10;
-	    question9.getNextQuestions()[2] = question10;
-	    question9.getNextQuestions()[3] = question10;
+		question3.getNextQuestions()[0] = question6;
+		question3.getNextQuestions()[1] = question6;
+		question3.getNextQuestions()[2] = question6;
+		question3.getNextQuestions()[3] = question6;
 
-	    question10.getNextQuestions()[0] = question11;
-	    question10.getNextQuestions()[1] = question11;
-	    question10.getNextQuestions()[2] = question11;
-	    question10.getNextQuestions()[3] = question11;
+		question6.getNextQuestions()[0] = question4;
+		question6.getNextQuestions()[1] = question4;
+		question6.getNextQuestions()[2] = question4;
+		question6.getNextQuestions()[3] = question4;
 
-	    question11.getNextQuestions()[0] = question12;
-	    question11.getNextQuestions()[1] = question12;
-	    question11.getNextQuestions()[2] = question12;
-	    question11.getNextQuestions()[3] = question12;
+		question4.getNextQuestions()[0] = question15;
+		question4.getNextQuestions()[1] = question15;
+		question4.getNextQuestions()[2] = question5;
+		question4.getNextQuestions()[3] = question7;//update
 
-	    question12.getNextQuestions()[0] = question14;
-	    question12.getNextQuestions()[1] = question13;
-	    question12.getNextQuestions()[2] = question14;
-	    question12.getNextQuestions()[3] = question13;
+		question5.getNextQuestions()[0] = question1;
+		question5.getNextQuestions()[1] = question1;
+		question5.getNextQuestions()[2] = question7;//update
+		question5.getNextQuestions()[3] = question7;
 
-	    question13.getNextQuestions()[0] = question14;
-	    question13.getNextQuestions()[1] = question14;
-	    question13.getNextQuestions()[2] = question14;
-	    question13.getNextQuestions()[3] = question14;
+		question7.getNextQuestions()[0] = question14;
+		question7.getNextQuestions()[1] = question8;
+		question7.getNextQuestions()[2] = question9;
+		question7.getNextQuestions()[3] = question9;
 
-	    question14.getNextQuestions()[0] = question17;
-	    question14.getNextQuestions()[1] = question17;
-	    question14.getNextQuestions()[2] = question17;
-	    question14.getNextQuestions()[3] = question17;
-	    
-	    question15.getNextQuestions()[0] = question16;
-	    question15.getNextQuestions()[1] = question16;
-	    question15.getNextQuestions()[2] = question15;
-	    question15.getNextQuestions()[3] = question15;
-	    
-	    question16.getNextQuestions()[0] = question18;
-	    question16.getNextQuestions()[1] = question18;
-	    question16.getNextQuestions()[2] = question18;
-	    question16.getNextQuestions()[3] = question18;
-	    
-	    question17.getNextQuestions()[0] = question18;
-	    question17.getNextQuestions()[1] = question18;
-	    question17.getNextQuestions()[2] = question18;
-	    question17.getNextQuestions()[3] = question18;
-	    
-	    question18.getNextQuestions()[0] = question19;
-	    question18.getNextQuestions()[1] = question19;
-	    question18.getNextQuestions()[2] = question19;
-	    question18.getNextQuestions()[3] = question19;
-	    curQuestion = question1;
+		question8.getNextQuestions()[0] = question10;
+		question8.getNextQuestions()[1] = question9;
+		question8.getNextQuestions()[2] = question10;
+		question8.getNextQuestions()[3] = question10;
+
+		question9.getNextQuestions()[0] = question10;
+		question9.getNextQuestions()[1] = question10;
+		question9.getNextQuestions()[2] = question10;
+		question9.getNextQuestions()[3] = question10;
+
+		question10.getNextQuestions()[0] = question13;
+		question10.getNextQuestions()[1] = question13;
+		question10.getNextQuestions()[2] = question13;
+		question10.getNextQuestions()[3] = question13;
+
+		question13.getNextQuestions()[0] = question14;
+		question13.getNextQuestions()[1] = question14;
+		question13.getNextQuestions()[2] = question14;
+		question13.getNextQuestions()[3] = question14;
+
+		question14.getNextQuestions()[0] = question17;
+		question14.getNextQuestions()[1] = question17;
+		question14.getNextQuestions()[2] = question17;
+		question14.getNextQuestions()[3] = question17;
+
+		question15.getNextQuestions()[0] = question16;
+		question15.getNextQuestions()[1] = question16;
+		question15.getNextQuestions()[2] = question15;
+		question15.getNextQuestions()[3] = question15;
+
+		question16.getNextQuestions()[0] = question18;
+		question16.getNextQuestions()[1] = question18;
+		question16.getNextQuestions()[2] = question18;
+		question16.getNextQuestions()[3] = question18;
+
+		question17.getNextQuestions()[0] = question18;
+		question17.getNextQuestions()[1] = question18;
+		question17.getNextQuestions()[2] = question18;
+		question17.getNextQuestions()[3] = question18;
+
+		question18.getNextQuestions()[0] = question19;
+		question18.getNextQuestions()[1] = question19;
+		question18.getNextQuestions()[2] = question19;
+		question18.getNextQuestions()[3] = question19;
+		curQuestion = question1;
 	}
 
 	private QuestionI makeQuestion1(){
 		String questionS = "You are going out tonight. What do you want to bring?";
 		String[] answers = {"A. Condoms", "B. A friend", "C. Extra pants", "D. Your cool new flask"};
-		String feed1 = "Great! Here are some other forms of birth control:\n -Male condom\n -Female condom\n -The pill\n -Contraceptive patch\n -Birth control shot\n -Diaphragm\n -NuvaRing \n -Spermicide \n -Cervical cap\n -Intrauterine Device (IUD)\n -Vasectomy\n -Female sterilization\n -Contraceptive film or implant ";
-		String feed2 = "Maybe you should have went with some birth control... here's a list of possible contraceptives:\n -Male condom\n -Female condom\n -The pill\n -Contraceptive patch\n -Birth control shot\n -Diaphragm\n -NuvaRing \n -Spermicide \n -Cervical cap\n -Intrauterine Device (IUD)\n -Vasectomy\n -Female sterilization\n -Contraceptive film or implant";
+		String feed1 = "Great! Here are some other forms of birth control:\n -Male condom\n -Female condom\n -The pill\n -Contraceptive patch\n -Shot (Depo-Provera)\n -Diaphragm\n -NuvaRing \n -Spermicide \n -Cervical cap\n -Intrauterine Device (IUD)\n -Vasectomy\n -Female sterilization\n -Contraceptive film or implant ";
+		String feed2 = "Maybe you should have went with some birth control... here's a list of possible contraceptives:\n -Male condom\n -Female condom\n -The pill\n -Contraceptive patch\n -Shot (Depo-Provera) \n -Diaphragm\n -NuvaRing \n -Spermicide \n -Cervical cap\n -Intrauterine Device (IUD)\n -Vasectomy\n -Female sterilization\n -Contraceptive film or implant";
 		String[] feedback = {feed1, feed1, feed2, feed2};
 		int[][] point = {{0, 5, 5, 0}, {5, 0, 0, 7}, {-5, -1, -1, -1}, {-15, -2, -2, -6}};
 		QuestionI[] nextQs = new QuestionI[4];
@@ -425,9 +420,9 @@ public class FullscreenActivity extends Activity {
 		String questionS = "Oh no! You're broke... but you still want to be safe. Where can you get free condoms?";
 		String[] answers = {"A. SHS", "B. CVS", "C. CHOP", "D. Your friend's room"};
 		String feed1 = "Good job! SHS offers 6 free condoms per visit for all Penn students";
-		String feed2 = "You can buy them here.. but they are not free! Go to SHS for free condoms.";
-		String feed3 = "Can't buy them here... goto SHS for free condoms";
-		String feed4 = "You probably shouldn't steal your friend's condoms... get free condoms at SHS!";
+		String feed2 = "You can buy them here.. but they are not free! Go to SHS or an RA in your college house for free condoms.";
+		String feed3 = "Can't buy them here... go to SHS or an RA in your college house for free condoms";
+		String feed4 = "You probably shouldn't steal your friend's condoms... get free condoms at SHS. College houses also distribute free condoms. Ask your RA!";
 		String[] feedback = {feed1, feed2, feed3, feed4};
 		int[][] point = {{0, 3, 2, 0}, {0, -3, -2, 0}, {0, -5, -2, 0}, {0, -3, -2, 0}};
 		QuestionI[] nextQs1 = new QuestionI[4];
@@ -465,7 +460,7 @@ public class FullscreenActivity extends Activity {
 		String[] answers = {"A. Drop the pants right meow", "B. I'm too drunk to even talk to people right now. I should go home", "C. Let's take 'em home!", "D. Time to get yo flirt on"};
 		String feed1 = "For some reason that didn't work...I guess you're going home alone tonight. Let's play again!";
 		String feed2 = "I guess you are done for the night...Let's play again!";
-		String feed3 = "Here we go...";
+		String feed3 = "This might not be a good idea tonight. Proceed with caution!";
 		String feed4 = "They're really into you and offer to walk home with you. They seem cool so you agree.";
 		String[] feedback = {feed1, feed2, feed3, feed4};
 		int[][] point = {{0, -10, -10, -10}, {20, 10, 10, 10}, {0, 0, 0, -10}, {0, 0, 0, 5}};
@@ -488,8 +483,8 @@ public class FullscreenActivity extends Activity {
 
 	private QuestionI makeQuestion7(){
 		String questionS = "So you guys get back and things are getting steamy! They look very uncomfortable though...";
-		String[] answers = {"A. Who cares! Let's raw-dog it and bail!", "B.  Ask them if they are okay", "C. Meh they aren't saying anything so I guess it's a green light for me!", "D. Let's try to convince them that they will have an unforgettable night."};
-		String feed1 = "This is a horrible decision! Not only is it immoral to take advantage of someone who is uncomfortable, but you can also go to jail because this might be condsidered rape. You can also get some crazy STDs and some potentially crazy and/or disturbed children.";
+		String[] answers = {"A. Go for it!", "B.  Ask them if they are okay", "C. Meh they aren't saying anything so I guess it's a green light for me!", "D. Let's try to convince them that they will have an unforgettable night."};
+		String feed1 = "This is a horrible decision! Not only is it immoral to take advantage of someone who is uncomfortable, but it's prohibited by the sexual assault policy on campus";
 		String feed2 = "How considerate of you! It is good to pause and talk whenever you are not sure what the other person wants, you feel like you're getting mixed signals, or your partner is not responsive.";
 		String feed3 = "You should not be trying to pressure them into sex! Whenever you are unsure of your partner's intentions you guys should pause and talk.";
 		String[] feedback = {feed1, feed2, feed1, feed3};
@@ -501,8 +496,8 @@ public class FullscreenActivity extends Activity {
 	private QuestionI makeQuestion8(){
 		String questionS = "It's a good thing that you asked!  They are 100% down for sex, but ask you to use protection...";
 		String[] answers = {"A. Sexy sex time! Let's skip the awkward condom fumbling", "B. Ok great! Time to put on a condom!", "C. They probably told that to previous partners so forget protection", "D. Naw, protection is optional... it feels better without it anyways..."};
-		String feed1 = "That is a poor decision! It is very important that you listen to your partner before and during sex. You should use protection even if they claim it's not neccesary because you never know what STD they might have and preventing unwanted pregnancies is very important.";
-		String feed2 = "That is a great decision! It is very important that you listen to your partner before and during sex. You should use protection even if they do not say so because you never know what STD they might have and preventing unwanted pregnancies is very important.";
+		String feed1 = "That is a poor decision! It is very important that you listen to your partner before and during sex. You should use protection even if they do not say so to protect yourself from potential STD infections and unplanned pregnancies.";
+		String feed2 = "That is a great decision! It is very important that you listen to your partner before and during sex. You should use protection even if they do not say so to protect yourself from potential STD infections and unplanned pregnancies.";
 		String[] feedback = {feed1, feed2, feed1, feed1};
 		int[][] point = {{0, -8, -7, 0}, {0, 8, 7, 0}, {0, -8, -7, 0}, {0, -8, -7, 0}};
 		QuestionI[] nextQs1 = new QuestionI[4];
@@ -512,9 +507,9 @@ public class FullscreenActivity extends Activity {
 	private QuestionI makeQuestion9(){
 		String questionS = "When you go to put on the condom, what is the first thing that you do?";
 		String[] answers = {"A. Try to put the condom on as fast as possible!", "B.  I can't find one so I'll just use a Snickers wrapper...", "C. I can't seem to open the wrapper... I guess I'll just go without it...", "D. Make sure the condom is not expired."};
-		String feed1 = "You should check the expiration date first! An expired condom does not protect against STDs and pregnancy as well as unexpired ones.";
-		String feed2 = "Surely you must be joking... As delicious as that might sound right now, a Snickers wrapper cannot replace a condom. If you did have condoms, you should have checked the expiration date because they are not a effective after they expire.";
-		String feed3 = "You are exposing yourself to the risk of STDs and unwanted pregnancy. It would have been better to find another condom that you could open.";
+		String feed1 = "You should check the expiration date first! An expired condom does not protect against STDs and pregnancy.";
+		String feed2 = "Surely you must be joking... As delicious as that might sound right now, a Snickers wrapper cannot replace a condom. If you did have condoms, you should have checked the expiration date because they are not effective after they expire.";
+		String feed3 = "You are exposing yourself to the risk of STDs and unplanned pregnancy. It would have been better to find another condom that you could open.";
 		String feed4 = "Good job! Checking the expiration date is the first thing that you should do because expired condoms do not work as well as unexpired ones.";
 		String[] feedback = {feed1, feed2, feed3, feed4};
 		int[][] point = {{0, -3, -2, 0}, {0, -5, -5, 0}, {0, -5, -5, 0}, {0, 5, 5, 0}};
@@ -535,6 +530,7 @@ public class FullscreenActivity extends Activity {
 		boolean[] isFinal = {false, false, false, false};
 		return new Question(questionS, answers, nextQs1, feedback, point, isFinal, "sticksolo");
 	}
+	/*
 	private QuestionI makeQuestion11(){
 		String questionS = "Time for some random sexual trivia! What percentage of people infected with HIV do not know they have it?";
 		String[] answers = {"A. 20%", "B. 40%", "C. 100%", "D. 10%"};
@@ -558,18 +554,19 @@ public class FullscreenActivity extends Activity {
 		boolean[] isFinal = {false, false, false, false};
 		return new Question(questionS, answers, nextQs1, feedback, point, isFinal, "durex");
 	}
+	 */
 	private QuestionI makeQuestion13(){
-		String questionS = "You are about to get started. What should you use?";
-		String[] answers = {"A. Lubricant and a condom", "B. Lubricant and two condoms", "C. Just a condom, who needs lubricant?", "D. Nutella"};
-		String feed1 = "Excellent choice! Lubricant has many benefits, including decreased chance of condom rippage, reduced rate of disease transmission during anal sex, and increased pleasure.";
-		String feed2 = "Lubricant has many benefits, including decreased chance of condom rippage, reduced rate of disease transmission during anal sex, and increased pleasure. However, two condoms are less effective that one because they produce friction and increase the chance of condom rippage.";
-		String feed3 = "Actually, lubricant has many benefits, including decreased chance of condom rippage, reduced rate of disease transmission during anal sex, and increased pleasure.";
-		String feed4 = "Although it is a delicious, nutritious alternative to chocolate sauce, Nutella is probably not what you're looking for in this instance. Condoms and lubricants have many benefits, including decreased chance of condom rippage, reduced rate of disease transmission during anal sex, and increased pleasure.";
+		String questionS = "Lubricant has many benefits. Some of them include: ?";
+		String[] answers = {"A. Decreased chance of condom breakage", "B. Increased pleasure", "C. Decreased risk of infection spread", "D. All of the above"};
+		String feed1 = "Excellent choice! Lubricant has many benefits, including decreased chance of the condom ripping.";
+		String feed2 = "Lubricant has many benefits, including increased pleasure. Just remember that two condoms are less effective than one because they produce friction and increase the chance of the condom ripping. ";
+		String feed3 = "Excellent choice! Lubricant has many benefits, including decreased risk of disease transmission.";
+		String feed4 = "Correct! All of these are good reasons to use lubricant.";
 		String[] feedback = {feed1, feed2, feed3, feed4};
-		int[][] point = {{0, 0, 10, 0}, {0, 0, -5, 0}, {0, 0, -5, 0}, {0, 0, -10, 0}};
+		int[][] point = {{0, 0, 5, 0}, {0, 0, 5, 0}, {0, 0, 5, 0}, {0, 0, 10, 0}};
 		QuestionI[] nextQs1 = new QuestionI[4];
 		boolean[] isFinal = {false, false, false, false};
-		return new Question(questionS, answers, nextQs1, feedback, point, isFinal, "nutella");
+		return new Question(questionS, answers, nextQs1, feedback, point, isFinal, "sticksolo");
 	}
 	private QuestionI makeQuestion14(){
 		String questionS = "You two fall on the bed, exhausted from your raucous love-making. What should you do before going to sleep?";
@@ -584,14 +581,13 @@ public class FullscreenActivity extends Activity {
 		return new Question(questionS, answers, nextQs1, feedback, point, isFinal, "sticksolo");
 	}
 
-
 	private QuestionI makeQuestion15(){
 		String questionS = "You wake up having no idea where you are and with a random naked person next to you. Oh no! You think you might not have used a condom";
 		String[] answers = {"A. Who cares! If I leave now, I can still make it to brunch at Hill.", "B. We should probably get some emergency contraception", "C. Ugh, maybe if I just go back to sleep, this whole situation will resolve itself.", "D. Why is there a hole in my pants?"};
-		String feed1 = "You should care! There is a huge risk of an STD or pregnancy! You should probably get that checked out.";
+		String feed1 = "You should care! There is a huge risk of an STD or pregnancy! You should probably go to SHS.";
 		String feed2 = "That's a great choice! Let's get some...";
-		String feed3 = "After you wake up the situation does not change...";
-		String feed4 = "Focus on the situation!";
+		String feed3 = "After you wake up the situation does not change... Talk to your partner and consider going to SHS for STD testing and emergency contraception.";
+		String feed4 = "Focus on the situation! Talk to your partner and consider going to SHS for STD testing and emergency contraception.";
 		String[] feedback = {feed1, feed2, feed3, feed4};
 		int[][] point = {{0, -7, -8, 0}, {0, 15, -5, 0}, {0, -2, -3, 0}, {0, 0, 0, 0}};
 		QuestionI[] nextQs1 = new QuestionI[4];
@@ -601,7 +597,7 @@ public class FullscreenActivity extends Activity {
 	private QuestionI makeQuestion16(){
 		String questionS = "Where can we get some emergency contraception?";
 		String[] answers = {"A. SHS", "B. CVS", "C. Planned Parenthood", "D. All of the above"};
-		String feed1 = "Good job! You can get emergency concraception at any of the answers. ";
+		String feed1 = "Good job! You can get emergency concraception at any of the answers. Next-choice is available, over the counter and for both males and females, for only $20 at SHS.";
 		String[] feedback = {feed1, feed1, feed1, feed1};
 		int[][] point = {{0, 0, 5, 0}, {0, 0, 5, 0}, {0, 0, 5, 0}, {0, 0, 10, 0}};
 		QuestionI[] nextQs1 = new QuestionI[4];
@@ -609,15 +605,15 @@ public class FullscreenActivity extends Activity {
 		return new Question(questionS, answers, nextQs1, feedback, point, isFinal, "sticksolo");
 	}
 	private QuestionI makeQuestion17(){
-	    String questionS = "Oh no! You realized that your condom broke last night! Where can we get some emergency contraception?";
-	    String[] answers = {"A. SHS", "B. CVS", "C. Planned Parenthood", "D. All of the above"};
-	    String feed1 = "Good job! You can get emergency concraception at any of the answers. ";
-	    String[] feedback = {feed1, feed1, feed1, feed1};
-	    int[][] point = {{0, 0, 5, 0}, {0, 0, 5, 0}, {0, 0, 5, 0}, {0, 0, 10, 0}};
-	    QuestionI[] nextQs1 = new QuestionI[4];
-	    boolean[] isFinal = {false, false, false, false};
-	    return new Question(questionS, answers, nextQs1, feedback, point, isFinal, "sticksolo");
-	  }
+		String questionS = "Oh no! You realized that your condom broke last night! Where can we get some emergency contraception?";
+		String[] answers = {"A. SHS", "B. CVS", "C. Planned Parenthood", "D. All of the above"};
+		String feed1 = "Good job! You can get emergency concraception at any of the answers. ";
+		String[] feedback = {feed1, feed1, feed1, feed1};
+		int[][] point = {{0, 0, 5, 0}, {0, 0, 5, 0}, {0, 0, 5, 0}, {0, 0, 10, 0}};
+		QuestionI[] nextQs1 = new QuestionI[4];
+		boolean[] isFinal = {false, false, false, false};
+		return new Question(questionS, answers, nextQs1, feedback, point, isFinal, "sticksolo");
+	}
 	private QuestionI makeQuestion18(){
 		String questionS = "What if I got an STI?";
 		String[] answers = {"A. Let's go to SHS to get a low-cost STI test.", "B. STI? I used spermicide. There's no way of getting STIs with spermicide.", "C. I don't think so...", "D. No way, I have no symptoms of any disease."};

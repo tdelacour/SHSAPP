@@ -16,6 +16,9 @@ import android.graphics.Point;
 public class FeedbackActivity extends Activity {
 
 	private boolean isFinal;
+	private int std;
+	private int prego;
+	private int rape;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,9 @@ public class FeedbackActivity extends Activity {
 		isFinal = intent.getBooleanExtra("isFinal", false);
 		int alcohol = intent.getIntExtra("alcohol", 0);
 		int sexual = intent.getIntExtra("sexual", 0);
+		std = intent.getIntExtra("std", 0);
+		prego = intent.getIntExtra("prego", 0);
+		rape = intent.getIntExtra("rape", 0);
 		setView(feedback, alcohol, sexual);
 	}
 
@@ -43,6 +49,9 @@ public class FeedbackActivity extends Activity {
 		//Weird code that returns to previous activity
 		if (isFinal){
 			Intent intent = new Intent(FeedbackActivity.this, EndScreenActivity.class);
+			intent.putExtra("std", this.std);
+			intent.putExtra("prego", this.prego);
+			intent.putExtra("rape", this.rape);
 			FeedbackActivity.this.startActivity(intent);
 			finish();
 		}
